@@ -1,0 +1,45 @@
+
+input[type="button"], table input[type="submit"]{
+	background: green;
+	color: white;
+	border: none;
+	border: 1px solid green;
+	border-radius: 25px;
+	padding: 10px;
+	cursor: pointer;
+}
+
+input[type="button"]:hover, table input[type="submit"]:hover{
+	background: white;
+	color: green;
+	border: 1px solid green;
+}
+
+table tr:hover{
+	background: orange;
+}
+
+form label{
+	text-align: right;
+	font-size: 12px;
+	padding: 0 10px 0 10px;
+	margin: 20px 0 0 0;
+	display: inline-block;
+	width: 10%;
+}
+
+form input[type=text], form textarea{
+	width: 50%;
+}
+
+#mensajes{
+	display: none;
+	position: fixed;
+	top: 50px;
+	right: 100px;
+	padding: 10px;
+	text-align: center;
+	border: 2px solid green;
+	background: yellow;
+	font-weight: bold;
+}
