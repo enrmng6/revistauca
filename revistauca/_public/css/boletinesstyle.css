@@ -1,0 +1,364 @@
+
+/* CONTENT */
+
+#content{
+	/*background: green;
+	width: 100%; */
+	height: 88%; /*el header mide 12%, y no hay footer*/
+	display: block;
+	padding: 3%;
+}
+
+.content_title{
+	display: block; 
+	background: white;
+	text-align: center;
+}
+
+
+#boletines_list{
+	display: block; 
+	/*background: gray;*/
+	height: 95%;
+}
+
+.boletines_item{
+	display: block; 
+	border-bottom: 3px solid green;
+	height: 98%;
+	cursor: pointer;
+}
+
+.boletines_item .boletines_item_half{
+	display: block; 
+	background: white;
+	height: 48%;
+	border-bottom: 1px solid gray;
+}
+
+.boletines_item .boletines_item_preview{
+	text-align: center;
+}
+
+.boletines_item img{
+	width: 80%;
+	height: 100%;
+}
+
+.boletines_item h1, h2, h3, h4, h5, p{
+	margin:0;
+    /*background-color: lime;*/
+}
+
+.boletines_item_author_date{
+	height: auto;
+}
+
+.boletines_item .boletines_item_author{
+	width: 60%;
+	display: inline-block;
+	/*float: left;*/
+}
+
+.boletines_item .boletines_item_date{
+	width: 28%;
+	display: inline-block;
+	/*float: right;*/
+}
+
+.boletines_item .boletines_item_description{
+	height: 50%;
+	overflow: hidden;
+	overflow-wrap: break-word;
+	text-overflow: ellipsis;
+}
+
+/*.boletines_item_word_break {
+    -ms-word-break: break-all;
+    word-break: break-all;
+    word-break: break-word;
+}*/
+
+.add_new{
+	height: 15px;
+	width: 15px;
+	color: #ffffff;
+	background: #1883ba;
+	border: 2px solid #0016b0;
+	border-radius: 50%; 
+	padding: 5%;
+	text-align: center;
+	font-weight: bold;
+	cursor: pointer;
+	
+	position: fixed;
+	bottom: 3%;
+	right: 3%;
+}
+
+
+/*.add_new:hover{
+    border: 2px solid #1883ba;
+    background-color: #ffffff;
+	color: #0016b0;
+	cursor:pointer;
+}*/
+
+.custom_btn{
+	text-decoration: none;
+    padding: 3%;
+	margin-left: 40px;
+    font-size: 15px;
+    color: #ffffff;
+    background-color: #1883ba;
+    border-radius: 25px;
+    border: 2px solid #0016b0;
+	display: inline-block;
+	cursor: pointer;
+}
+
+/*.custom_btn:hover{
+    border: 2px solid #1883ba;
+    background-color: #ffffff;
+	color: #0016b0;
+	cursor:pointer;
+}*/
+
+
+.ver_revista_btn{
+	text-decoration: none;
+    padding: 3%;
+	margin-left: 40px;
+	margin-bottom: 3%;
+    font-size: 15px;
+    color: #686868;
+    /*background-color: #1883ba;*/
+    border-radius: 25px;
+    border: 2px solid #e2e2e2;
+	display: inline-block;
+	cursor: pointer;
+	font-family: 'Montserrat-Light', sans-serif;
+	text-transform: uppercase;
+	text-align: center;
+}
+
+.ver_revista_btn:hover{
+    color: #686868;
+    background-color: #e9b73f;
+}
+
+
+
+
+
+
+.boletines_detail{
+	display: block; 
+	/*background: gray;*/
+	height: 100%;
+}
+
+.boletines_detail #boletines_detail_media{
+	display: block; 
+	background: white;
+	border-bottom: 3px solid green;
+	text-align: center;
+	height: 50%;
+}
+
+.boletines_detail #boletines_detail_media img{
+	width: 80%;
+	height: 100%;
+}
+
+.boletines_autor_thumbnail{
+	display: inline-block;
+    /*vertical-align:top;*/
+	width: 50px;
+	height: 50px;
+	text-align: center; 
+}
+
+.boletines_autor_thumbnail img{
+	width: 100%;
+	height: 100%;
+	border-radius: 50%;
+}
+
+
+.boletines_detail h1, h2, h3, h4, h5, p{
+	margin:0;
+}
+
+/*.boletines_detail .inline{
+	display: inline-block;
+}*/
+
+.inline{
+	display: inline-block;
+}
+
+.boletines_detail #boletines_detail_description{
+	display: block;
+	overflow-wrap: break-word;
+	
+	margin-bottom: 30px;
+}
+
+
+#boletines_comments{
+	margin-bottom: 20%;
+	width: 100%;
+}
+
+#boletines_comments .boletines_comment_thumbnail{
+	display: inline-block;
+    vertical-align:top;
+	width: 40px;
+	height: 40px;
+	text-align: center; 
+}
+
+#boletines_comments .boletines_comment_thumbnail img { 
+	width: 100%;
+	height: 100%;
+	border-radius: 50%;
+}
+
+#boletines_comments .boletines_comment_text{
+	display: inline-block; 
+    vertical-align:top;
+	width: 80%;
+}
+
+/*#boletines_comments .boletines_comment_text input[type="text"]{
+	width: 90%;
+}*/
+
+#boletines_comments #boletines_comment_edittext{
+	width: 97%;
+	min-height: 20px;
+	background: white;
+	border-bottom: 1px solid gray;
+	overflow-wrap: break-word;
+}
+
+#boletines_comments .boletines_comment_buttons_right{
+	width: 88%;
+	text-align: right;
+}
+
+#boletines_comments .boletines_comment_buttons_left{
+	width: 88%;
+	text-align: left;
+}
+
+/*#boletines_comments .boletines_comment_buttons div{
+	padding-left: 1%;
+	padding-right: 1%;
+}*/
+
+#boletines_comments .send_comment{
+	padding: 3%;
+	margin-left: 40px;
+    font-size: 15px;
+    color: #ffffff;
+    background-color: #1883ba;
+    border-radius: 25px;
+    border: 2px solid #0016b0;
+	display: inline-block;
+	cursor: pointer;
+}
+
+
+#boletines_comments .boletines_comment_onlytext{
+	/*width: 90%;*/
+	min-height: 20px;
+	background: white;
+	border-bottom: 1px solid gray;
+	overflow-wrap: break-word;
+}
+
+.boletines_comments_item{
+	margin-bottom: 3%;
+}
+
+
+
+#boletines_crud{
+	display: block; 
+	background: gray;
+	height: 100%;
+}
+
+#boletines_crud #boletines_crud_media{
+	display: block; 
+	background: white;
+	border-bottom: 3px solid red;
+	text-align: center;
+	height: 50%;
+}
+
+#boletines_crud #boletines_crud_media img{
+	width: 80%;
+	height: 90%;
+}
+
+#boletines_crud #boletines_crud_media .boletines_crud_browse{
+	text-align: right;
+}
+
+#boletines_crud h1, h2, h3, h4, h5, p{
+	margin:0;
+}
+
+#boletines_crud .inline{
+	display: inline-block;
+}
+
+#boletines_crud #boletines_crud_title{
+	width: 100%;
+}
+
+#boletines_crud #boletines_crud_title input[type="text"]{
+	display: inline-block;
+	width: 80%;
+}
+
+#boletines_crud #boletines_crud_description{
+	width: 100%;
+	min-height: 20px;
+	background: white;
+	border-bottom: 1px solid gray;
+	overflow-wrap: break-word;
+}
+
+#boletines_detail_description .boletines_comment_text{
+	display: inline-block; 
+    vertical-align:top;
+	width: 100%;
+	cursor: select;
+}
+
+#boletines_detail_description .boletines_comment_edittext{
+	width: 97%;
+	min-height: 20px;
+	background: white;
+	border-bottom: 1px solid gray;
+	overflow-wrap: break-word;
+}
+
+#boletines_crud .boletines_crud_buttons{
+	width: 88%;
+	text-align: right;
+	margin-bottom: 25%;
+}
+
+#boletines_crud .boletines_crud_buttons div{
+	padding-left: 1%;
+	padding-right: 1%;
+}
+
+/*.boletinesDeleteImg:hover > .boletines_comments_item{
+	background: orange;
+}*/

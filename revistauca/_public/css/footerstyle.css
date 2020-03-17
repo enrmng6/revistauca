@@ -1,0 +1,162 @@
+
+
+/* EMERGENTS */
+
+#left_popout_cover{
+	position: fixed;
+	top: 11%;
+	left: 0;
+	width: 100%; 
+	height: 100%;
+	display: block;
+	overflow: hidden;
+	background: gray;
+	/*border: 1px solid #A9A7A7;   
+	border-radius: 33px 33px 33px 33px;
+	-moz-border-radius: 33px 33px 33px 33px;
+	-webkit-border-radius: 33px 33px 33px 33px;*/
+	opacity: .9;
+	display: none;
+}
+
+#left_popout{
+	position: fixed;
+	top: 11%;
+	left: 0;
+	width: 0%; 
+	height: 100%;
+	display: block;
+	overflow: hidden;
+	/*padding-top: 3%;
+    background:white;
+	border: 1px solid #A9A7A7;   
+	border-radius: 33px 33px 33px 33px;
+	-moz-border-radius: 33px 33px 33px 33px;
+	-webkit-border-radius: 33px 33px 33px 33px;*/
+}
+
+.left_popout_item{
+	width: 100%; 
+	height: 10%;
+	/*border: 1px solid gray;*/
+    background:white;
+    text-align: center;
+	border-right: 1px solid gray;
+	border-bottom: 1px solid gray; 
+	cursor: pointer;
+	padding-top: 1%;
+}
+
+.left_popout_item:hover{
+    background:#E9B73E;
+}
+
+.left_popout_item img{
+	width: 50px;
+	height: 80%;
+	margin-left: 10%;
+	/*border: 1px solid black;*/
+}
+
+.left_popout_item a, .left_popout_item a:visited{
+	
+	margin-top: 1%;
+	margin-left: 10%;
+	/*border: 1px solid orange;*/
+	text-decoration: none;
+	color: black;
+}
+
+
+.fixed_pos{
+	position: fixed;
+}
+
+
+#add_new_post{
+	height: 15px;
+	width: 15px;
+	color: #ffffff;
+	background: #1883ba;
+	border: 2px solid #0016b0;
+	border-radius: 50%; 
+	padding: 5%;
+	text-align: center;
+	font-weight: bold;
+	cursor: pointer;
+	
+	position: fixed;
+	bottom: 3%;
+	right: 3%;
+}
+
+
+#add_new_post:hover{
+    border: 2px solid #1883ba;
+    background-color: #ffffff;
+	color: #0016b0;
+	cursor:pointer;
+}
+
+
+.delete_post{
+	height: 15px;
+	width: 15px;
+	color: #ffffff;
+	background: #orange;
+	border: 2px solid #0016b0;
+	border-radius: 50%; 
+	padding: 5%;
+	text-align: center;
+	font-weight: bold;
+	cursor: pointer;
+	
+	position: fixed;
+	bottom: 3%;
+	right: 3%;
+	
+	/*right: 21%; background:; color: black;*/
+}
+
+
+
+/*#delete_post{
+	background: url('/revistauca/_public/img/cancelicon.png') center no-repeat;
+}
+
+.delete_post_icon{
+	height: 20px;
+	width: 100%;
+	margin: 0;
+	background: url('/revistauca/_public/img/cancelico
+
+
+
+/* FOOTER */
+
+#footer{
+	width: 100%; 
+	height: 10%; 
+	display: block;
+}
+
+.footer_fixed{
+	width: 100%;
+	height: 10%;
+	position: fixed;
+	background: white; 
+}
+
+.footer_menu_left{
+	border: 1px solid green; 
+	width: 23%; 
+	height: 100%; 
+	float: left;
+}
+
+.footer_menu_right{
+	border: 1px solid green; 
+	width: 23%; 
+	height: 100%; 
+	float: right;
+}
