@@ -1,30 +1,31 @@
 
+<link rel="stylesheet" type="text/css" href="/revistauca/admin/application/_public/css/machotesstyle.css">
+
 <div id="container">
 	<h1>Hola <?php echo $_SESSION['nombre_usuario']; ?>, bienvenid@ a la administracion de la App RevistaUCA</h1>
 
 	<div id="body">
-		<p>Elija alguna de las siguientes opciones</p>
-
+		<p>Elija alguno de las siguientes noiticias</p>
+		<input type="button" onclick="location.href= '/revistauca/admin/noticias/detail/'" value="Crear una nueva">
 		<center>
 			<table>
 				<tr>
-					<td><img id="enlaceusuarios" src="/revistauca/_public/img/Perfil.png" alt="Usuarios"><span>Usuarios</span></td>
-					<td><img id="enlacenoticias" src="/revistauca/_public/img/blog.png" alt="Noticias"><span>Noticias</span></td>
-					<td><img id="enlaceentrecontadores" src="/revistauca/_public/img/revistas.png" alt="Entre Contadores"><span>Entre Contadores</span></td>
-					<td><img id="enlaceeducar" src="/revistauca/_public/img/revistas.png" alt="EdUCAr"><span>EdUCAr</span></td>
+					<th>titulo</th>
+					<th>descripcion</th>
+					<th>autor</th>
+					<th></th>
 				</tr>
+			<?php
+			foreach ( $noticias as $noticia ){ ?>
 				<tr>
-					<td><img id="enlaceucaprofesional" src="/revistauca/_public/img/revistas.png" alt="UCA Profesional"><span>UCA Profesional</span></td>
-					<td><img id="enlaceboletines" src="/revistauca/_public/img/articulos.png" alt="Boletines"><span>Boletines</span></td>
-					<td><img id="enlacecalendario" src="/revistauca/_public/img/calendario.png" alt="Calendario"><span>Calendario</span></td>
-					<td><img id="enlaceabout" src="/revistauca/_public/img/about.png" alt="About"><span>About</span></td>
+					<td><?php echo $noticia['titulo']; ?></td>
+					<td><?php echo $noticia['descripcion']; ?></td>
+					<td><?php echo $noticia['id_autor']; ?></td>
+					<td><input type="button" onclick="location.href= '/revistauca/admin/noticias/detail/<?php echo $noticias['id']; ?>';" value="Editar"></td>
 				</tr>
+			<?php } ?>
 			</table>
 		</center>
-		
-		<p id="enlacemachotes">
-			Machotes (versi?n de prueba)
-		</p>
 		
 	</div>
 
