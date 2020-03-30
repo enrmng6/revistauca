@@ -361,36 +361,6 @@ function refreshComments(){
 refreshComments();
 
 
-function registrarVisita(idElemento){
-
-	if(window.XMLHttpRequest){
-		
-		var objetoAjax = new XMLHttpRequest();
-
-		objetoAjax.onreadystatechange = function () {
-
-			if(objetoAjax.readyState == 4 && objetoAjax.status == 200){
-				//alert(objetoAjax.responseText);
-				if(objetoAjax.responseText == 1){
-					//console.log("Visita registrada!");
-				}
-				else{
-					//console.log("No se pudo registrar la visita ...");
-				}
-			}
-
-		}
-		
-		objetoAjax.open("POST", "/revistauca/__controller/visitas_controller.php?insert", true);
-		
-		var formData = new FormData();
-		formData.append("id_elemento", idElemento);
-		formData.append("entidad", 'noticias');
-		
-		objetoAjax.send(formData);
-	}
-}
-
 
 /*var mostrarImagen = function(event) {
 	var imagen = document.getElementById('postPreviewImg');

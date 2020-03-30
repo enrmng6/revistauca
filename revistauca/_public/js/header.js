@@ -15,7 +15,11 @@ function showLeftMenu(){
 				document.getElementById("left_popout").style.width = ''+85+'%';
 				document.getElementById("left_popout_cover").style.display = 'block';
 				
+				document.getElementById("left_popout_scroll_cover").style.display = 'block';
+				document.body.style.overflow = 'hidden';
+				
 				ancho = 90;	// esto solamente para que la rotacion se haga completa (lo del 90 es pura casualidad)
+				
 			}
 			
 			//$("#menu").addClass("rotated");
@@ -46,6 +50,44 @@ function showLeftMenu(){
 			rotating.style.transform       = 'rotate('+ancho+'deg)'; 
 			
 			document.getElementById("left_popout_cover").style.display = 'none';
+			
+			document.getElementById("left_popout_scroll_cover").style.display = 'none';
+			document.body.style.overflow = 'auto';
+			
 		}, 1);
+	}
+}
+
+
+
+function registrarVisita(idElemento, entidad){
+
+	if(window.XMLHttpRequest){
+		
+		var objetoAjax = new XMLHttpRequest();
+
+		objetoAjax.onreadystatechange = function () {
+
+			if(objetoAjax.readyState == 4 && objetoAjax.status == 200){
+				//console.log(objetoAjax.responseText);
+				var respuesta = JSON.parse(objetoAjax.responseText);
+				
+				if(respuesta.numeroVisitas == 1){
+					document.getElementById("numeroVisitas").innerText = "1 visita";
+				}
+				else if(respuesta.numeroVisitas > 1){
+					document.getElementById("numeroVisitas").innerText = respuesta.numeroVisitas + " visitas";
+				}
+			}
+
+		}
+		
+		objetoAjax.open("POST", "/revistauca/__controller/visitas_controller.php?insert", true);
+		
+		var formData = new FormData();
+		formData.append("id_elemento", idElemento);
+		formData.append("entidad", entidad);
+		
+		objetoAjax.send(formData);
 	}
 }

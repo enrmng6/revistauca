@@ -1,7 +1,7 @@
 
-function cargarNoticias(){
+function cargarCalendario(){
 
-	// estilo JavaScript puro
+	// estilo JavaScript pur
 	if(window.XMLHttpRequest){
 		
 		var objetoAjax = new XMLHttpRequest();
@@ -10,38 +10,40 @@ function cargarNoticias(){
 
 			if(objetoAjax.readyState == 4 && objetoAjax.status == 200){
 				
-				var noticiaslist_div = document.getElementById("noticias_list");
-				noticiaslist_div.innerHTML = "";//noticiaslist_div.innerHTML = objetoAjax.responseText;
-				$(noticiaslist_div).append(objetoAjax.responseText);
+				var calendariolist_div = document.getElementById("calendario_list");
+				calendariolist_div.innerHTML = "";//calendariolist_div.innerHTML = objetoAjax.responseText;
+				if(objetoAjax.responseText !== ""){
+					$(calendariolist_div).append(objetoAjax.responseText);
+				}
 			}
 
 		}
 
-		objetoAjax.open("GET", "/revistauca/__controller/noticias_controller.php?select");
+		objetoAjax.open("GET", "/revistauca/__controller/calendario_controller.php?select");
 		objetoAjax.send(null);
 
 	}
 	
 	// estilo jQuery
 	/*$.ajax({
-		url: "/revistauca/__controller/noticias_controller.php?select",
+		url: "/revistauca/__controller/calendario_controller.php?select",
 		type: 'GET',
 		async: true,
 		crossDomain: true,
 		cache: false,
 		success: function(respuestaServidor){
-			$("#noticias_list").html(respuestaServidor);
+			$("#calendario_list").html(respuestaServidor);
 		}
 	});*/
 }
 
 
-function showNoticia(noticiaId){
-	location.href = "/revistauca/noticias/detail.php?noticiaid=" + noticiaId;
+function showCalendario(calendarioId){
+	location.href = "/revistauca/calendario/detail.php?calendarioid=" + calendarioId;
 }
 
 var highlightfirst = false;
-function cargarComentariosNoticia(noticiaId) {
+function cargarComentarioscalendario(calendarioId) {
 
 	if(window.XMLHttpRequest){
 		
@@ -55,8 +57,8 @@ function cargarComentariosNoticia(noticiaId) {
 				
 				var numeroComentarios = arregloComentarios[0];
 				
-				document.getElementById("noticia_comments_count").innerHTML = numeroComentarios.row_count;
-				document.getElementById("noticia_comments_count_label").innerHTML = (numeroComentarios.row_count == 1) ? "Comentario" : "Comentarios";
+				document.getElementById("calendario_comments_count").innerHTML = numeroComentarios.row_count;
+				document.getElementById("calendario_comments_count_label").innerHTML = (numeroComentarios.row_count == 1) ? "Comentario" : "Comentarios";
 				
 				var listaComentarios = arregloComentarios[1];
 				
@@ -68,27 +70,27 @@ function cargarComentariosNoticia(noticiaId) {
 				
 					var objetoActual = listaComentarios[i];
 					
-					var comentarioHTML = "<div class='noticia_comments_item' id='noticia_comment_" + objetoActual.id + "' >";
+					var comentarioHTML = "<div class='calendario_comments_item' id='calendario_comment_" + objetoActual.id + "' >";
 					comentarioHTML += "<div>";
-					comentarioHTML += "	<div class='noticia_comment_thumbnail'>";
+					comentarioHTML += "	<div class='calendario_comment_thumbnail'>";
 					comentarioHTML += "		<img class='img" + objetoActual.id_autor + "' />";
 					comentarioHTML += "	</div>";
-					comentarioHTML += "	<div class='noticia_comment_text'>";
-					comentarioHTML += "		<div class='noticia_detail_author_date'>";
-					comentarioHTML += "			<div class='inline'><h4 class='noticia_comment_author'><span class='nombre" + objetoActual.id_autor + "' >...</span></h4></div>";
+					comentarioHTML += "	<div class='calendario_comment_text'>";
+					comentarioHTML += "		<div class='calendario_detail_author_date'>";
+					comentarioHTML += "			<div class='inline'><h4 class='calendario_comment_author'><span class='nombre" + objetoActual.id_autor + "' >...</span></h4></div>";
 					comentarioHTML += "			<div class='inline'>, </div>";
-					comentarioHTML += "			<div class='inline'><h4 class='noticia_comment_date'>" + objetoActual.creado + "</h4></div>";
+					comentarioHTML += "			<div class='inline'><h4 class='calendario_comment_date'>" + objetoActual.creado + "</h4></div>";
 					comentarioHTML += "		</div>";
-					comentarioHTML += "		<div class='noticia_comment_onlytext' >";
+					comentarioHTML += "		<div class='calendario_comment_onlytext' >";
 					comentarioHTML += "		" + objetoActual.comentario + "";
 					comentarioHTML += "		</div>";
 					comentarioHTML += "	</div>";
 					comentarioHTML += "</div>";
-					comentarioHTML += "<!--<div class='noticia_comment_buttons' style='display: none;'>";
+					comentarioHTML += "<!--<div class='calendario_comment_buttons' style='display: none;'>";
 					comentarioHTML += "	<div class='inline'>Like</div>";
 					comentarioHTML += "	<div class='inline'>Dislike</div>";
 					comentarioHTML += "</div>-->";
-					comentarioHTML += "</div> <!-- end .noticia_comments_item -->";
+					comentarioHTML += "</div> <!-- end .calendario_comments_item -->";
 						
 					respuestaFinal += comentarioHTML;
 						
@@ -96,7 +98,7 @@ function cargarComentariosNoticia(noticiaId) {
 						
 				}
 				
-				document.getElementById("noticia_comments_list").innerHTML = respuestaFinal;
+				document.getElementById("calendario_comments_list").innerHTML = respuestaFinal;
 				
 				for(i = 0; i < colaCargasImagenes.length; i++){
 					$(document.body).append(colaCargasImagenes[i]);
@@ -106,16 +108,16 @@ function cargarComentariosNoticia(noticiaId) {
 
 		}
 
-		objetoAjax.open("GET", "/revistauca/__controller/noticias_controller.php?select&noticiaid=" + noticiaId + "&comments&json");
+		objetoAjax.open("GET", "/revistauca/__controller/calendario_controller.php?select&calendarioid=" + calendarioId + "&comments&json");
 		objetoAjax.send(null);
 		
 		if(highlightfirst){
 			var condicion = 1;
-			$(".noticia_comments_item").each(function(){
+			$(".calendario_comments_item").each(function(){
 				if(condicion == 1){
 					function unhighlight(){
 						var condicion2 = 1;
-						$(".noticia_comments_item").each(function(){
+						$(".calendario_comments_item").each(function(){
 							if(condicion2 == 1){
 								$(this).css("background", "");
 								condicion2++;
@@ -124,7 +126,7 @@ function cargarComentariosNoticia(noticiaId) {
 					};
 					function highlight(){
 						var condicion2 = 1;
-						$(".noticia_comments_item").each(function(){
+						$(".calendario_comments_item").each(function(){
 							if(condicion2 == 1){
 								$(this).css("background", "orange");
 								condicion2++;
@@ -163,13 +165,13 @@ function cargarImagenNombre(id_autor){
 	});
 }
 
-function mostrarImagenNoticia(event) {
-	var imagen = document.getElementById('noticiaPreviewImg');
+function mostrarImagenCalendario(event) {
+	var imagen = document.getElementById('calendarioPreviewImg');
 	imagen.src = URL.createObjectURL(event.target.files[0]);
 	URL.revokeObjectURL(event.target.files[0]);
 };
 				
-function crearNoticia(noticiaId){
+function crearCalendario(calendarioId){
 
 	if(window.XMLHttpRequest){
 		
@@ -180,33 +182,33 @@ function crearNoticia(noticiaId){
 			if(objetoAjax.readyState == 4 && objetoAjax.status == 200){
 				
 				if(objetoAjax.responseText == 1){
-					alert("Noticia publicada con exito!");
-					location.href = "/revistauca/noticias/";
+					alert("calendario publicado con exito!");
+					location.href = "/revistauca/calendario/";
 				}
 				else{
-					alert("No se pudo publicar la noticia ...");
+					alert("No se pudo publicar el calendario ...");
 				}
 			}
 
 		}
 		
-		//var noticiaId = document.getElementById('noticiaId').innerHTML.trim();
-		if(noticiaId == '')
-			objetoAjax.open("POST", "/revistauca/__controller/noticias_controller.php?insert", true);
+		//var calendarioId = document.getElementById('calendarioId').innerHTML.trim();
+		if(calendarioId == '')
+			objetoAjax.open("POST", "/revistauca/__controller/calendario_controller.php?insert", true);
 		else
-			objetoAjax.open("POST", "/revistauca/__controller/noticias_controller.php?insert&noticiaid=" + noticiaId + "", true);
+			objetoAjax.open("POST", "/revistauca/__controller/calendario_controller.php?insert&calendarioid=" + calendarioId + "", true);
 		
-		var inputFile = document.getElementById('noticiaPreview');
-		var noticiaPreview = inputFile.files[0];
+		var inputFile = document.getElementById('calendarioPreview');
+		var calendarioPreview = inputFile.files[0];
 		
-		var noticiaTitle = document.getElementById('noticiaTitle').value;
-		var noticiaDescription = document.getElementById('noticiaDescription').innerHTML;
-		var noticiaContent = document.getElementById('noticiaContent').innerHTML;
+		var calendarioTitle = document.getElementById('calendarioTitle').value;
+		var calendarioDescription = document.getElementById('calendarioDescription').innerHTML;
+		var calendarioContent = document.getElementById('calendarioContent').innerHTML;
 		
 		var validation = "";
-		validation += (noticiaTitle.trim() === "") ? "El titulo es obligatorio\n" : "";
-		validation += (noticiaDescription.trim() === "") ? "La descripcion es obligatoria\n" : "";
-		validation += (noticiaContent.trim() === "") ? "El contenido es obligatorio\n" : "";
+		validation += (calendarioTitle.trim() === "") ? "El titulo es obligatorio\n" : "";
+		validation += (calendarioDescription.trim() === "") ? "La descripcion es obligatoria\n" : "";
+		validation += (calendarioContent.trim() === "") ? "El contenido es obligatorio\n" : "";
 		
 		if(validation !== ""){
 			alert(validation);
@@ -214,10 +216,10 @@ function crearNoticia(noticiaId){
 		}
 		
 		var formData = new FormData();
-		formData.append("preview", noticiaPreview);
-		formData.append("titulo", noticiaTitle);
-		formData.append("descripcion", noticiaDescription);
-		formData.append("contenido", noticiaContent);
+		formData.append("preview", calendarioPreview);
+		formData.append("titulo", calendarioTitle);
+		formData.append("descripcion", calendarioDescription);
+		formData.append("contenido", calendarioContent);
 		
 		objetoAjax.send(formData);
 	}
@@ -225,7 +227,7 @@ function crearNoticia(noticiaId){
 
 function enviarComment(){
 	
-	if(document.getElementById('noticia_comment_edittext').innerHTML.trim() === ""){
+	if(document.getElementById('calendario_comment_edittext').innerHTML.trim() === ""){
 		return;
 	}
 
@@ -238,8 +240,8 @@ function enviarComment(){
 			if(objetoAjax.readyState == 4 && objetoAjax.status == 200){
 				if(objetoAjax.responseText == 1){
 					highlightfirst = true;
-					cargarComentariosNoticia(document.getElementById('id_padre').value);
-					document.getElementById('noticia_comment_edittext').innerHTML = '';
+					cargarComentarioscalendario(document.getElementById('id_padre').value);
+					document.getElementById('calendario_comment_edittext').innerHTML = '';
 				}
 				else{
 					alert("No se pudo enviar el comentario ...");
@@ -248,18 +250,18 @@ function enviarComment(){
 
 		}
 
-		objetoAjax.open("POST", "/revistauca/__controller/noticias_controller.php?newcomment", true);
+		objetoAjax.open("POST", "/revistauca/__controller/calendario_controller.php?newcomment", true);
 		
 		var formData = new FormData();
 		formData.append("id_padre", document.getElementById('id_padre').value);
-		formData.append("comentario", document.getElementById('noticia_comment_edittext').innerHTML);
+		formData.append("comentario", document.getElementById('calendario_comment_edittext').innerHTML);
 		
 		objetoAjax.send(formData);
 	}
 }
 
 
-function eliminarNoticia(){
+function eliminarCalendario(){
 
 	if(window.XMLHttpRequest){
 		
@@ -271,22 +273,23 @@ function eliminarNoticia(){
 				
 				if(objetoAjax.responseText == 1){
 					
-					alert("noticia eliminada con exito!");
-					location.href = "/revistauca/noticias/";
+					alert("calendario eliminado con exito!");
+					location.href = "/revistauca/calendario/";
 				}
 				else{
-					alert("No se pudo eliminar la noticia ...");
+					alert("No se pudo eliminar el calendario ...");
 				}
 			}
 
 		}
 		
-		var noticiaId = document.getElementById('noticiaId').innerHTML.trim();
-		objetoAjax.open("POST", "/revistauca/__controller/noticias_controller.php?noticiaid=" +noticiaId+ "&delete", true);
+		var calendarioId = document.getElementById('calendarioId').innerHTML.trim();
+		objetoAjax.open("POST", "/revistauca/__controller/calendario_controller.php?calendarioid=" +calendarioId+ "&delete", true);
 		
 		objetoAjax.send();
 	}
 }
+
 
 /*var mostrarImagen = function(event) {
 	var imagen = document.getElementById('postPreviewImg');
@@ -319,9 +322,6 @@ function subirImagenAjax(){
 		objetoAjax.send(formData);
 	}
 }*/
-
-
-
 
 
 
