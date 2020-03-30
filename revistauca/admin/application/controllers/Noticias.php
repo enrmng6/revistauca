@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-class Machotes extends CI_Controller{
+class Noticias extends CI_Controller{
 	
 	public function index($id = FALSE)
 	{
@@ -10,16 +10,16 @@ class Machotes extends CI_Controller{
 			return;
 		}
 
-		$this->load->model('Noticias_model','modeloNoticias');
-		$datos['Noticias'] = $this->modeloNoticias->select_noticias($id);
+		$this->load->model('Noticias_Model','modeloNoticias');
+		$datos['noticias'] = $this->modeloNoticias->select_noticias($id);
 		
-		if($datos['Noticias'] == NULL){
+		if($datos['noticias'] == NULL){
 			echo "¡Datos incorrectos!";
 			return;
 		}
 
 		$this->load->view('templates/header');
-		$this->load->view('machotes/index', $datos);
+		$this->load->view('noticias/index', $datos);
 		$this->load->view('templates/footer');
 	}
 	
@@ -31,15 +31,15 @@ class Machotes extends CI_Controller{
 		}
 
 		if($id !== FALSE){
-			$this->load->model('Noticias_model','modeloNoticias');
-			$datos['Noticias'] = $this->modeloNoticias->select_noticias($id);
+			$this->load->model('Noticias_Model','modeloNoticias');
+			$datos['machote'] = $this->modeloNoticias->select_noticias($id);
 			
-			if($datos['Noticias'] == NULL){
+			if($datos['machote'] == NULL){
 				echo "¡Datos incorrectos!";
 				return;
 			}
 			
-			$datos['Noticias'] = $datos['Noticias'][0];
+			$datos['machote'] = $datos['machote'][0];
 		}
 		else{
 			$datos['machote']['titulo'] = "";
@@ -52,7 +52,7 @@ class Machotes extends CI_Controller{
 		}
 
 		$this->load->view('templates/header');
-		$this->load->view('machotes/detail', $datos);
+		$this->load->view('noticias/detail', $datos);
 		$this->load->view('templates/footer');
 	}
 	
@@ -66,7 +66,7 @@ class Machotes extends CI_Controller{
 		$contenido = $this->input->get_post('contenido', TRUE);
 			
 		//$ret=$this->input->get_post('id_usuario',TRUE).','.$this->input->get_post('nombre_usuario',TRUE).','.$this->input->get_post('correo_usuario',TRUE).','.$this->input->get_post('telefono',TRUE).','.$this->input->get_post('contrasena',TRUE);
-		$this->load->model('Noticias_model','modeloNoticias');
+		$this->load->model('Noticias_Model','modeloNoticias');
 		$nuevo_id = $this->modeloNoticias->insert_Noticias($preview, $archivo, $titulo, $id_autor, $descripcion, $contenido);
 		
 		echo $nuevo_id;
@@ -84,7 +84,7 @@ class Machotes extends CI_Controller{
 		$contenido = $this->input->get_post('contenido', TRUE);
 			
 		//$ret=$this->input->get_post('id_usuario',TRUE).','.$this->input->get_post('nombre_usuario',TRUE).','.$this->input->get_post('correo_usuario',TRUE).','.$this->input->get_post('telefono',TRUE).','.$this->input->get_post('contrasena',TRUE);
-		$this->load->model('Noticias_model','modeloNoticias');
+		$this->load->model('Noticias_Model','modeloNoticias');
 		
 		$resultadoUpdate = $this->modeloNoticias->update_Noticias($id, $preview, $archivo, $titulo, $id_autor, $descripcion, $contenido);
 		
@@ -96,7 +96,7 @@ class Machotes extends CI_Controller{
 	{
 		$id = $this->input->get_post('id',TRUE);
 		
-		$this->load->model('Noticias_model','modeloNoticias');
+		$this->load->model('Noticias_Model','modeloNoticias');
 		
 		$resultadoDelete = $this->modeloNoticias->delete_Noticias($id);
 		

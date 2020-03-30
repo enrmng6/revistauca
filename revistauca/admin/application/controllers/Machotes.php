@@ -40,6 +40,7 @@ class Machotes extends CI_Controller{
 			}
 			
 			$datos['machote'] = $datos['machote'][0];
+			$datos['opcion'] = "Editar";
 		}
 		else{
 			$datos['machote']['titulo'] = "";
@@ -49,6 +50,7 @@ class Machotes extends CI_Controller{
 			$datos['machote']['preview'] = "";
 			$datos['machote']['archivo'] = "";
 			$datos['machote']['id'] = "";
+			$datos['opcion'] = "Crear";
 		}
 
 		$this->load->view('templates/header');
