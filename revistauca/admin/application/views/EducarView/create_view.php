@@ -4,7 +4,7 @@
 
 <h1>Crear Nueva Revista</h1>
 
-<form id="machotes_form" action="<?=base_url("educar_controller/add")?>" method="POST">
+<form id="machotes_form" action="<?=base_url("educar/add")?>" method="POST">
 
 	<label for="titulo">Titulo</label>
 	<input type="text" id="titulo" name="titulo"><br><br>

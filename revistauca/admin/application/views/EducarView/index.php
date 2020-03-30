@@ -5,8 +5,8 @@
 	<h1>Hola <?php echo $_SESSION['nombre_usuario']; ?>, bienvenid@ a la administracion de la App RevistaUCA</h1>
 
 	<div id="body">
-		<p>Elija alguno de las siguientes Revistas Educar</p>
-		<input type="button" onclick="location.href= '<?=base_url("educar_controller/create_view")?>'" value="Crear uno nuevo">
+		<p>Elija alguno de las siguientes Revistas EdUCAr</p>
+		<input type="button" onclick="location.href= '<?=base_url("educar/create_view")?>'" value="Crear uno nuevo">
 			<input type="button" onclick="location.href= '<?=base_url()?>'" value="Inicio">
 		<center>
 			<table border="1">
@@ -36,8 +36,8 @@
 	?>
 						<?=$usuariosnombre; ?>
 					</td>
-					<td><br><input type="button" onclick="location.href= '/revistauca/admin/educar_controller/mod/<?=$fila->id;?>';" value="Editar"></td>
-					<td><br><input type="button" onclick="location.href= '/revistauca/admin/educar_controller/eliminar/<?=$fila->id;?>';" value="Eliminar"></td>
+					<td><br><input type="button" onclick="location.href= '/revistauca/admin/educar/mod/<?=$fila->id;?>';" value="Editar"></td>
+					<td><br><input type="button" onclick="if(confirm('Segur@ que desea eliminar esta publicaciòn?')){location.href= '/revistauca/admin/educar/eliminar/<?=$fila->id;?>';}" value="Eliminar"></td>
 				</tr>
 			<?php } ?>
 			</table>
@@ -48,42 +48,4 @@
 	<p class="footer">Page rendered in <strong>{elapsed_time}</strong> seconds. <?php echo  (ENVIRONMENT === 'development') ?  'CodeIgniter Version <strong>' . CI_VERSION . '</strong>' : '' ?></p>
 </div>
 
-<script type="text/javascript">
-//$(document).ready(function(){
-	$('#enlacemachotes').click(function(){
-		location.href = "/revistauca/admin/machotes";
-	});
 
-	$('#enlaceusuarios').click(function(){
-		location.href = "/revistauca/admin/usuarios";
-	});
-
-	$('#enlacenoticias').click(function(){
-		location.href = "/revistauca/admin/noticias";
-	});
-
-	$('#enlaceentrecontadores').click(function(){
-		location.href = "/revistauca/admin/entrecontadores";
-	});
-
-	$('#enlaceeducar').click(function(){
-		location.href = "/revistauca/admin/educar";
-	});
-
-	$('#enlaceucaprofesional').click(function(){
-		location.href = "/revistauca/admin/ucaprofesional";
-	});
-
-	$('#enlaceboletines').click(function(){
-		location.href = "/revistauca/admin/boletines";
-	});
-
-	$('#enlacecalendario').click(function(){
-		location.href = "/revistauca/admin/calendario";
-	});
-
-	$('#enlaceabout').click(function(){
-		location.href = "/revistauca/admin/about";
-	});
-
-</script>

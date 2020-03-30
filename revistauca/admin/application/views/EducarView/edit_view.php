@@ -31,7 +31,7 @@
 	  <?php } ?>
 </form>
 <p class="footer">Page rendered in <strong>{elapsed_time}</strong> seconds. <?php echo  (ENVIRONMENT === 'development') ?  'CodeIgniter Version <strong>' . CI_VERSION . '</strong>' : '' ?></p>
-<button><a href="<?=base_url("educar_controller")?>"style="color: black; text-decoration:none;">Volver</a>  </button>
+<button><a href="<?=base_url("educar")?>"style="color: black; text-decoration:none;">Volver</a>  </button>
 
 </div>
 
