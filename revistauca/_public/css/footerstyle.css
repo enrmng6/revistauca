@@ -73,6 +73,7 @@
 
 .left_popout_item table{
 	width: 80%;
+	height: 100%;
 	margin-left: 10%;
 	font-size: small;
 	font-weight: bold;
@@ -80,6 +81,7 @@
 
 .left_popout_item table td{
 	text-align: center;
+	height: 50%;
 }
 
 .left_popout_item table td:hover{
@@ -90,8 +92,8 @@
 	border-radius: 50%;
 	
 	/*float:left; */
-	width: 30; 
-	height: 30;
+	width: 30px !important;
+	height: 30px !important;
 }
 
 
