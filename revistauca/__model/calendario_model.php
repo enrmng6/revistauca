@@ -1,7 +1,7 @@
 <?php
 include_once $_SERVER["DOCUMENT_ROOT"] . "/revistauca/__model/db_config.php";
 
-class Educar_Model{
+class Calendario_Model{
 	
 	private $db_object;
 	

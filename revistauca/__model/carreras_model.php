@@ -1,6 +1,5 @@
 <?php
-
-include $_SERVER["DOCUMENT_ROOT"] . "/revistauca/__model/db_config.php";
+include_once $_SERVER["DOCUMENT_ROOT"] . "/revistauca/__model/db_config.php";
 
 class Carreras_Model{
 	
