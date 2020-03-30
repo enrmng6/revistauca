@@ -1,7 +1,7 @@
 <? 
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
+ini_set('display_errors', 0);
+ini_set('display_startup_errors', 0);
+//error_reporting(E_ALL);
 
 session_start();
 
@@ -41,6 +41,11 @@ else if($nombre_entidad == 'boletines'){
 	include $_SERVER["DOCUMENT_ROOT"] . "/revistauca/__controller/boletines_controller.php";
 	$controller = new Boletines_Controller();
 	$page_title = "Boletines";
+}
+else if($nombre_entidad == 'calendario'){
+	include $_SERVER["DOCUMENT_ROOT"] . "/revistauca/__controller/calendario_controller.php";
+	$controller = new Calendario_Controller();
+	$page_title = "Calendario";
 }
 else if($nombre_entidad == 'about'){
 	include $_SERVER["DOCUMENT_ROOT"] . "/revistauca/__controller/about_controller.php";
