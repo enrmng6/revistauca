@@ -1,0 +1,329 @@
+
+/* CONTENT */
+
+#content{
+	/*background: green;
+	width: 100%; */
+	height: 88%; /*el header mide 12%, y no hay footer*/
+	display: block;
+	padding: 3%;
+}
+
+.content_title{
+	display: block; 
+	background: white;
+	text-align: center;
+}
+
+
+#calendario_list{
+	display: block; 
+	/*background: gray;*/
+	height: 95%;
+}
+
+.calendario_item{
+	display: block; 
+	border-bottom: 3px solid green;
+	height: 98%;
+	cursor: pointer;
+}
+
+.calendario_item .calendario_item_half{
+	display: block; 
+	background: white;
+	height: 48%;
+	border-bottom: 1px solid gray;
+}
+
+.calendario_item .calendario_item_preview{
+	text-align: center;
+}
+
+.calendario_item img{
+	width: 80%;
+	height: 100%;
+}
+
+.calendario_item h1, h2, h3, h4, h5, p{
+	margin:0;
+    /*background-color: lime;*/
+}
+
+.calendario_item_author_date{
+	height: auto;
+}
+
+.calendario_item .calendario_item_author{
+	width: 60%;
+	display: inline-block;
+	/*float: left;*/
+}
+
+.calendario_item .calendario_item_date{
+	width: 28%;
+	display: inline-block;
+	/*float: right;*/
+}
+
+.calendario_item .calendario_item_description{
+	height: 50%;
+	overflow: hidden;
+	overflow-wrap: break-word;
+	text-overflow: ellipsis;
+}
+
+/*.calendario_item_word_break {
+    -ms-word-break: break-all;
+    word-break: break-all;
+    word-break: break-word;
+}*/
+
+.add_new{
+	height: 15px;
+	width: 15px;
+	color: #ffffff;
+	background: #1883ba;
+	border: 2px solid #0016b0;
+	border-radius: 50%; 
+	padding: 5%;
+	text-align: center;
+	font-weight: bold;
+	cursor: pointer;
+	
+	position: fixed;
+	bottom: 3%;
+	right: 3%;
+}
+
+
+/*.add_new:hover{
+    border: 2px solid #1883ba;
+    background-color: #ffffff;
+	color: #0016b0;
+	cursor:pointer;
+}*/
+
+.custom_btn{
+	text-decoration: none;
+    padding: 3%;
+	margin-left: 40px;
+    font-size: 15px;
+    color: #ffffff;
+    background-color: #1883ba;
+    border-radius: 25px;
+    border: 2px solid #0016b0;
+	display: inline-block;
+	cursor: pointer;
+}
+
+/*.custom_btn:hover{
+    border: 2px solid #1883ba;
+    background-color: #ffffff;
+	color: #0016b0;
+	cursor:pointer;
+}*/
+
+
+
+
+
+
+.calendario_detail{
+	display: block; 
+	/*background: gray;*/
+	height: 100%;
+}
+
+.calendario_detail #calendario_detail_media{
+	display: block; 
+	background: white;
+	border-bottom: 3px solid green;
+	text-align: center;
+	height: 50%;
+}
+
+.calendario_detail #calendario_detail_media img{
+	width: 80%;
+	height: 100%;
+}
+
+.calendario_autor_thumbnail{
+	display: inline-block;
+    /*vertical-align:top;*/
+	width: 50px;
+	height: 50px;
+	text-align: center; 
+}
+
+.calendario_autor_thumbnail img{
+	width: 100%;
+	height: 100%;
+	border-radius: 50%;
+}
+
+
+.calendario_detail h1, h2, h3, h4, h5, p{
+	margin:0;
+}
+
+/*.calendario_detail .inline{
+	display: inline-block;
+}*/
+
+.inline{
+	display: inline-block;
+}
+
+.calendario_detail #calendario_detail_description{
+	display: block;
+	overflow-wrap: break-word;
+	
+	margin-bottom: 30px;
+}
+
+
+#calendario_comments{
+	margin-bottom: 20%;
+	width: 100%;
+}
+
+#calendario_comments .calendario_comment_thumbnail{
+	display: inline-block;
+    vertical-align:top;
+	width: 40px;
+	height: 40px;
+	text-align: center; 
+}
+
+#calendario_comments .calendario_comment_thumbnail img { 
+	width: 100%;
+	height: 100%;
+	border-radius: 50%;
+}
+
+#calendario_comments .calendario_comment_text{
+	display: inline-block; 
+    vertical-align:top;
+	width: 80%;
+}
+
+/*#calendario_comments .calendario_comment_text input[type="text"]{
+	width: 90%;
+}*/
+
+#calendario_comments #calendario_comment_edittext{
+	width: 97%;
+	min-height: 20px;
+	background: white;
+	border-bottom: 1px solid gray;
+	overflow-wrap: break-word;
+}
+
+#calendario_comments .calendario_comment_buttons{
+	width: 88%;
+	text-align: right;
+}
+
+/*#calendario_comments .calendario_comment_buttons div{
+	padding-left: 1%;
+	padding-right: 1%;
+}*/
+
+#calendario_comments .send_comment{
+	padding: 3%;
+	margin-left: 40px;
+    font-size: 15px;
+    color: #ffffff;
+    background-color: #1883ba;
+    border-radius: 25px;
+    border: 2px solid #0016b0;
+	display: inline-block;
+	cursor: pointer;
+}
+
+
+#calendario_comments .calendario_comment_onlytext{
+	/*width: 90%;*/
+	min-height: 20px;
+	background: white;
+	border-bottom: 1px solid gray;
+	overflow-wrap: break-word;
+}
+
+
+
+
+#calendario_crud{
+	display: block; 
+	background: gray;
+	height: 100%;
+}
+
+#calendario_crud #calendario_crud_media{
+	display: block; 
+	background: white;
+	border-bottom: 3px solid red;
+	text-align: center;
+	height: 50%;
+}
+
+#calendario_crud #calendario_crud_media img{
+	width: 80%;
+	height: 90%;
+}
+
+#calendario_crud #calendario_crud_media .calendario_crud_browse{
+	text-align: right;
+}
+
+#calendario_crud h1, h2, h3, h4, h5, p{
+	margin:0;
+}
+
+#calendario_crud .inline{
+	display: inline-block;
+}
+
+#calendario_crud #calendario_crud_title{
+	width: 100%;
+}
+
+#calendario_crud #calendario_crud_title input[type="text"]{
+	display: inline-block;
+	width: 80%;
+}
+
+#calendario_crud #calendario_crud_description{
+	width: 100%;
+	min-height: 20px;
+	background: white;
+	border-bottom: 1px solid gray;
+	overflow-wrap: break-word;
+}
+
+#calendario_detail_description .calendario_comment_text{
+	display: inline-block; 
+    vertical-align:top;
+	width: 100%;
+	cursor: select;
+}
+
+#calendario_detail_description .calendario_comment_edittext{
+	width: 97%;
+	min-height: 20px;
+	background: white;
+	border-bottom: 1px solid gray;
+	overflow-wrap: break-word;
+}
+
+#calendario_crud .calendario_crud_buttons{
+	width: 88%;
+	text-align: right;
+	margin-bottom: 25%;
+}
+
+#calendario_crud .calendario_crud_buttons div{
+	padding-left: 1%;
+	padding-right: 1%;
+}
