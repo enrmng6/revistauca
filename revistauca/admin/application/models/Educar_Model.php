@@ -1,6 +1,6 @@
 <?php
                //extendemos CI_Model
-class educar_model extends CI_Model{
+class Educar_Model extends CI_Model{
     public function __construct() {
         //llamamos al constructor de la clase padre
         parent::__construct();
