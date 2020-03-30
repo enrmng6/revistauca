@@ -3,7 +3,7 @@
 
 <div id="container">
 
-<h1>Editar un machote</h1>
+<h1><?php echo $opcion; ?> un machote</h1>
 
 <form id="machotes_form" action="/revistauca/admin/machotes/crear" method="POST" onsubmit="return false;">
 	
