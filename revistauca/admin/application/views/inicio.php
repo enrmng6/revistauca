@@ -9,21 +9,21 @@
 			<table>
 				<tr>
 					<td><img id="enlaceusuarios" src="/revistauca/_public/img/Perfil.png" alt="Usuarios"><span>Usuarios</span></td>
-					<td><img id="enlacenoticias" src="/revistauca/_public/img/blog.png" alt="Noticias"><span>Noticias</span></td>
-					<td><img id="enlaceentrecontadores" src="/revistauca/_public/img/revistas.png" alt="Entre Contadores"><span>Entre Contadores</span></td>
-					<td><img id="enlaceeducar" src="/revistauca/_public/img/revistas.png" alt="EdUCAr"><span>EdUCAr</span></td>
+					<td><img id="enlacenoticias" src="/revistauca/_public/img/articulos.png" alt="Noticias"><span>Noticias</span></td>
+					<td><img id="enlaceentrecontadores" src="/revistauca/_public/img/logo-entrecontadores.png" alt="Entre Contadores"><span>Entre Contadores</span></td>
+					<td><img id="enlaceeducar" src="/revistauca/_public/img/logo-educar.png" alt="EdUCAr"><span>EdUCAr</span></td>
 				</tr>
 				<tr>
-					<td><img id="enlaceucaprofesional" src="/revistauca/_public/img/revistas.png" alt="UCA Profesional"><span>UCA Profesional</span></td>
-					<td><img id="enlaceboletines" src="/revistauca/_public/img/articulos.png" alt="Boletines"><span>Boletines</span></td>
+					<td><img id="enlaceucaprofesional" src="/revistauca/_public/img/logo-ucaprofesional.png" alt="UCA Profesional"><span>UCA Profesional</span></td>
+					<td><img id="enlaceboletines" src="/revistauca/_public/img/blog.png" alt="Boletines"><span>Boletines</span></td>
 					<td><img id="enlacecalendario" src="/revistauca/_public/img/calendario.png" alt="Calendario"><span>Calendario</span></td>
 					<td><img id="enlaceabout" src="/revistauca/_public/img/about.png" alt="About"><span>About</span></td>
 				</tr>
 			</table>
 		</center>
 		
-		<p id="enlacemachotes">
-			Machotes (versi?n de prueba)
+		<p id="enlacemachotes" style="cursor: pointer;">
+			Machotes (versi&oacute;n de prueba)
 		</p>
 		
 	</div>

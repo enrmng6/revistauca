@@ -61,7 +61,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		
 		$.ajax({
 			type:"POST",
-			url:"/revistauca/admin/usuarios/login",
+			url:"/revistauca/admin/inicio/login",
 			data:cadena,
 			success:function(responseText){
 				
@@ -70,6 +70,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				}
 				
 				alert(responseText);
+				/*if(responseText==1){
+					location.href = "/revistauca/noticias/";
+				}else{
+					alert("Datos Incorrectos");
+				}*/
+			},
+			error:function(responseText){
+				
+				alert(responseText.statusText);
 				/*if(responseText==1){
 					location.href = "/revistauca/noticias/";
 				}else{
