@@ -28,6 +28,8 @@ class Noticias_Controller{
 		
 		$sql = $sql . " ORDER BY creado DESC;";
 		
+		//$this->registrarVisita($id); // ESTO SE HACE DESDE JS ...
+		
 		return $this->getResult($sql);
 	}
 	
@@ -100,6 +102,28 @@ class Noticias_Controller{
 		return $this->executeStatement($sql);
 	}
 	
+	
+	public function registrarVisita($id_elemento){
+		
+		$entidad = "noticias";
+		$id_usuario = $_SESSION['id_usuario'];
+	
+		$header_list = headers_list();
+		$request_header = "";
+		
+		for($i = 0; $i < count($header_list); $i++){
+			$request_header .=  $header_list[$i] . "\r\n";
+		}
+		
+		try{
+			include $_SERVER["DOCUMENT_ROOT"] . "/revistauca/__controller/visitas_controller.php";
+			
+			$visitasController = new Visitas_Controller();
+			$result = $visitasController->insertVisita($id_elemento, $entidad, $id_usuario, $request_header);
+			
+			return $result;
+		}catch(Exception $e){}
+	}
 }
 
 
@@ -163,6 +187,7 @@ if(isset($_GET['select'])){
 						<div class="inline">
 							<h4 id="noticia_detail_date"><? echo $fila['creado']; ?></h4>
 							<h4 id="noticia_detail_author">...</h4>
+							<h5><span id="numeroVisitas"></span></h5>
 						</div>
 						
 						<script>
@@ -182,6 +207,24 @@ if(isset($_GET['select'])){
 									$("#noticia_item_<? echo $fila['id'] ?> #noticia_detail_author").each(function(){
 										$(this).html(jsonObject.nombre);
 									});
+								}
+							});
+							
+							// CODIGO PARA CARGAR EL NUMERO DE VISITAS VIA JSON/AJAX/PHP
+							$.ajax({
+								type:"GET",
+								url:"/revistauca/__controller/visitas_controller.php?numeroVisitas&id_elemento=" + <? echo $fila['id'] ?> + "&entidad=noticias",
+								success:function(responseText){
+									$("#noticia_item_<? echo $fila['id'] ?> #numeroVisitas").each(function(){
+										var respuesta = responseText * 1;//JSON.parse(responseText);
+										if(respuesta == 1){
+											$(this).text("1 visita");
+										}
+										else if(respuesta > 1){
+											$(this).text(respuesta + " visitas");
+										}
+									});
+									
 								}
 							});
 						</script>

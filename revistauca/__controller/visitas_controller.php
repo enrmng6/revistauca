@@ -33,10 +33,12 @@ class Visitas_Controller{
 	
 	public function selectCountVisitas($id_elemento, $entidad, $id_usuario){	// esta funcion es personalizada para abstraer el SQL
 	
-		$sql = "SELECT contador FROM visitas WHERE id_elemento=" . $id_elemento . " AND entidad='" . $entidad . "'";
-		
 		if($id_usuario > 0){
+			$sql = "SELECT contador FROM visitas WHERE id_elemento=" . $id_elemento . " AND entidad='" . $entidad . "'";
 			$sql = $sql . " AND id_usuario=" . $id_usuario . "";
+		}
+		else{
+			$sql = "SELECT count(id) FROM visitas WHERE id_elemento=" . $id_elemento . " AND entidad='" . $entidad . "'";
 		}
 		
 		$sql = $sql . ";";
@@ -52,36 +54,83 @@ class Visitas_Controller{
 	request_header TEXT*/
 	public function insertVisita($id_elemento, $entidad, $id_usuario, $request_header){	// esta funcion es personalizada para abstraer el SQL
 		
+		$contador_visitas = 0;
+		$resultado_consulta = $this->selectCountVisitas($id_elemento, $entidad, $id_usuario);
 		
+		if($resultado_consulta->num_rows > 0){
+			$resultado_consulta->data_seek(0);
+			$fila = $resultado_consulta->fetch_assoc();
+			$contador_visitas = $fila['contador'];
+			$contador_visitas = $contador_visitas * 1; // para pasarlo a numero
+		}
+		else{
+			$contador_visitas = $contador_visitas->num_rows;
+		}
 		
 		$sql = "INSERT INTO visitas (id_elemento, entidad, id_usuario, contador, request_header) VALUES (";
 		$sql = $sql . "" . $id_elemento . ", '" . $entidad ."', " . $id_usuario . ", 1, '" . $request_header . "');";
 		
-		$resultado_contador = $this->selectCountVisitas($id_elemento, $entidad, $id_usuario);
-		$resultado_contador->data_seek(0);
-		$fila = $resultado_contador->fetch_assoc();
-		
-		$contador_visitas = $fila['contador'];
-		$contador_visitas = $contador_visitas * 1; // para pasarlo a numero
-		
 		if($contador_visitas >= 1){
 			
 			$contador_visitas++;
-			$sql = "UPDATE visitas set contador=" . $contador_visitas . ", request_header='" . $request_header . "' WHERE id_elemento=" . $id_elemento . " AND entidad='" . $entidad . "' AND id_usuario=" . $id_usuario . "";
+			$sql = "UPDATE visitas set contador=" . $contador_visitas . ", request_header='" . $request_header . "'";
+			$sql = $sql . " WHERE id_elemento=" . $id_elemento . " AND entidad='" . $entidad . "' AND id_usuario=" . $id_usuario . "";
+			
 		}
 		
-		return $this->executeStatement($sql);
+		//return $this->executeStatement($sql);
+		
+		$respuestaJSON['resultado'] = $this->executeStatement($sql);
+		$respuestaJSON['numeroVisitas'] = 0;
+		
+		$resultado_consulta = $this->selectCountVisitas($id_elemento, $entidad, 0); // contar todas las visitas sin contar al usuario
+		
+		
+		if($resultado_consulta->num_rows > 0){
+			$resultado_consulta->data_seek(0);
+			$fila = $resultado_consulta->fetch_assoc();
+			$respuestaJSON['numeroVisitas'] = $fila["count(id)"];
+			$respuestaJSON['numeroVisitas'] = $respuestaJSON['numeroVisitas'] * 1; // para pasarlo a numero
+		}
+		else{
+			$respuestaJSON['numeroVisitas'] = $resultado_consulta->num_rows;
+		}
+		
+		return json_encode($respuestaJSON);
 	}
 	
+	
+	public function numVisitas($id_elemento, $entidad){
+		
+		$resultado_consulta = $this->selectCountVisitas($id_elemento, $entidad, 0); // contar todas las visitas sin contar al usuario
+		
+		if($resultado_consulta->num_rows > 0){
+			$resultado_consulta->data_seek(0);
+			$fila = $resultado_consulta->fetch_assoc();
+			$numVisitas = $fila["count(id)"];
+			$numVisitas = $numVisitas * 1; // para pasarlo a numero
+		}
+		else{
+			$numVisitas = $resultado_consulta->num_rows;
+		}
+		
+		return $numVisitas;
+	}
 }
 
 
 session_start();
 
 
-if(isset($_GET['select'])){
+if(isset($_GET['numeroVisitas'])){
+	
+	$id_elemento = $_GET['id_elemento'];
+	$entidad = $_GET['entidad'];
 	
 	$controlador = new Visitas_Controller();
+	
+	echo $controlador->numVisitas($id_elemento, $entidad);
+	
 }
 else if(isset($_GET['insert'])){
 	

@@ -168,6 +168,7 @@ if(isset($_GET['select'])){
 						<div class="inline">
 							<h4 id="ucaprofesional_detail_date"><? echo $fila['creado']; ?></h4>
 							<h4 id="ucaprofesional_detail_author">...</h4>
+							<h5><span id="numeroVisitas"></span></h5>
 						</div>
 						
 						<script>
@@ -187,6 +188,24 @@ if(isset($_GET['select'])){
 									$("#ucaprofesional_item_<? echo $fila['id'] ?> #ucaprofesional_detail_author").each(function(){
 										$(this).html(jsonObject.nombre);
 									});
+								}
+							});
+							
+							// CODIGO PARA CARGAR EL NUMERO DE VISITAS VIA JSON/AJAX/PHP
+							$.ajax({
+								type:"GET",
+								url:"/revistauca/__controller/visitas_controller.php?numeroVisitas&id_elemento=" + <? echo $fila['id'] ?> + "&entidad=ucaprofesional",
+								success:function(responseText){
+									$("#ucaprofesional_item_<? echo $fila['id'] ?> #numeroVisitas").each(function(){
+										var respuesta = responseText * 1;//JSON.parse(responseText);
+										if(respuesta == 1){
+											$(this).text("1 visita");
+										}
+										else if(respuesta > 1){
+											$(this).text(respuesta + " visitas");
+										}
+									});
+									
 								}
 							});
 						</script>
