@@ -77,7 +77,7 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'localhost:8080'/*'157.230.178.160'*/,
+	'hostname' => 'localhost',
 	'username' => 'web1',
 	'password' => 'web1',
 	'database' => 'revistauca',
