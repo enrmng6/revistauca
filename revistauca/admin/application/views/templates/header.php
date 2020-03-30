@@ -1,3 +1,9 @@
+<? 
+if(!isset($_SESSION['tipo_usuario']) || $_SESSION['tipo_usuario'] != "administrador"){
+	echo "<script>location.href = '/revistauca/usuarios/login.php';</script>";
+	return;
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,7 +25,7 @@
 <body>
 
 <div id="logoutdiv">
-	<a href="/revistauca/">RevistaUCA App</a>&nbsp;|&nbsp;<a href="/revistauca/admin/usuarios/logout">Cerrar sesi&oacute;n</a>
+	<a href="/revistauca/">RevistaUCA App</a>&nbsp;|&nbsp;<a href="/revistauca/admin/inicio/logout">Cerrar sesi&oacute;n</a>
 </div>
 
 <div id="mensajes"></div>
