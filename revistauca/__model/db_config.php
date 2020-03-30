@@ -5,7 +5,7 @@ class MySQLConnection{
 	private $conexion;
 	
 	public function __construct(){
-		$this->conexion = mysqli_connect('localhost', 'web1', 'web1', 'revistaucaapp');
+		$this->conexion = mysqli_connect('localhost', 'web1', 'web1', 'revistauca');
 	}
 	
 	public function getResult($select_sql){
