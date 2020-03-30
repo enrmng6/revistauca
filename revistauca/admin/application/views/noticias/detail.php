@@ -5,7 +5,7 @@
 
 <h1>Editar una Noticia</h1>
 
-<form id="machotes_form" action="/revistauca/admin/Noticias/crear" method="POST" onsubmit="return false;">
+<form id="machotes_form" action="/revistauca/admin/noticias/crear" method="POST" onsubmit="return false;">
 	
 	<label for="titulo">Titulo</label>
 	<input type="text" id="titulo" name="titulo" value="<?php echo $machote['titulo']; ?>"/><br>
@@ -68,10 +68,10 @@
 					"&archivo=" + $('#archivo').val() + 
 					"&id=" + $('#id').val();
 					
-		var URL = "/revistauca/admin/Noticias/crear";
+		var URL = "/revistauca/admin/noticias/crear";
 		
 		if( ($('#id').val() * 1) > 1 ){
-			URL = "/revistauca/admin/Noticias/modificar";
+			URL = "/revistauca/admin/noticias/modificar";
 		}
 		
 		$.ajax({
@@ -90,7 +90,7 @@
 
 		var cadena = "id=" + $('#id').val();
 					
-		var URL = "/revistauca/admin/Noticias/eliminar";
+		var URL = "/revistauca/admin/noticias/eliminar";
 		
 		$.ajax({
 			type: "POST",
@@ -99,7 +99,7 @@
 			success: function(responseText){
 				mostrarMensaje(responseText);
 				if(responseText.indexOf("1") == 0) {
-					location.href = "/revistauca/admin/Noticias";
+					location.href = "/revistauca/admin/noticias";
 				}
 			}
 		});

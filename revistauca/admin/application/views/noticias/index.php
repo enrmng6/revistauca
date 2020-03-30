@@ -21,7 +21,7 @@
 					<td><?php echo $noticia['titulo']; ?></td>
 					<td><?php echo $noticia['descripcion']; ?></td>
 					<td><?php echo $noticia['id_autor']; ?></td>
-					<td><input type="button" onclick="location.href= '/revistauca/admin/noticias/detail/<?php echo $noticias['id']; ?>';" value="Editar"></td>
+					<td><input type="button" onclick="location.href= '/revistauca/admin/noticias/detail/<?php echo $noticia['id']; ?>';" value="Editar"></td>
 				</tr>
 			<?php } ?>
 			</table>
