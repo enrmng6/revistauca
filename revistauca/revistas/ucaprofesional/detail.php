@@ -33,6 +33,7 @@ include $_SERVER["DOCUMENT_ROOT"] . "/revistauca/__view/shared/header.php";
 			<div class="inline">
 				<h4 id="ucaprofesional_detail_date"><? echo $fila['creado']; ?></h4>
 				<h4 id="ucaprofesional_detail_author">...</h4>
+				<h5 id="noticia_detail_author"><span id="numeroVisitas"></span></h5>
 			</div>
 			
 			<script>
@@ -126,7 +127,7 @@ include $_SERVER["DOCUMENT_ROOT"] . "/revistauca/__view/shared/header.php";
 </div> <!-- end #content -->
 
 <script>
-	registrarVisita(<? echo $_GET['ucaprofesionalid']; ?>);
+	registrarVisita(<? echo $_GET['ucaprofesionalid']; ?>, 'ucaprofesional');
 </script>
 	
 <?php
