@@ -10,11 +10,11 @@ class Machotes extends CI_Controller{
 			return;
 		}
 
-		$this->load->model('machotes_model','modeloMachotes');
+		$this->load->model('Machotes_Model','modeloMachotes');
 		$datos['machotes'] = $this->modeloMachotes->select_machote($id);
 		
 		if($datos['machotes'] == NULL){
-			echo "¡Datos incorrectos!";
+			echo "Â¡Datos incorrectos!";
 			return;
 		}
 
@@ -31,11 +31,11 @@ class Machotes extends CI_Controller{
 		}
 
 		if($id !== FALSE){
-			$this->load->model('machotes_model','modeloMachotes');
+			$this->load->model('Machotes_Model','modeloMachotes');
 			$datos['machote'] = $this->modeloMachotes->select_machote($id);
 			
 			if($datos['machote'] == NULL){
-				echo "¡Datos incorrectos!";
+				echo "Â¡Datos incorrectos!";
 				return;
 			}
 			
@@ -68,7 +68,7 @@ class Machotes extends CI_Controller{
 		$contenido = $this->input->get_post('contenido', TRUE);
 			
 		//$ret=$this->input->get_post('id_usuario',TRUE).','.$this->input->get_post('nombre_usuario',TRUE).','.$this->input->get_post('correo_usuario',TRUE).','.$this->input->get_post('telefono',TRUE).','.$this->input->get_post('contrasena',TRUE);
-		$this->load->model('machotes_model','modeloMachotes');
+		$this->load->model('Machotes_Model','modeloMachotes');
 		$nuevo_id = $this->modeloMachotes->insert_machote($preview, $archivo, $titulo, $id_autor, $descripcion, $contenido);
 		
 		echo $nuevo_id;
@@ -86,7 +86,7 @@ class Machotes extends CI_Controller{
 		$contenido = $this->input->get_post('contenido', TRUE);
 			
 		//$ret=$this->input->get_post('id_usuario',TRUE).','.$this->input->get_post('nombre_usuario',TRUE).','.$this->input->get_post('correo_usuario',TRUE).','.$this->input->get_post('telefono',TRUE).','.$this->input->get_post('contrasena',TRUE);
-		$this->load->model('machotes_model','modeloMachotes');
+		$this->load->model('Machotes_Model','modeloMachotes');
 		
 		$resultadoUpdate = $this->modeloMachotes->update_machote($id, $preview, $archivo, $titulo, $id_autor, $descripcion, $contenido);
 		
@@ -98,7 +98,7 @@ class Machotes extends CI_Controller{
 	{
 		$id = $this->input->get_post('id',TRUE);
 		
-		$this->load->model('machotes_model','modeloMachotes');
+		$this->load->model('Machotes_Model','modeloMachotes');
 		
 		$resultadoDelete = $this->modeloMachotes->delete_machote($id);
 		
