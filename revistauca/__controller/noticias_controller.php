@@ -57,7 +57,7 @@ class Noticias_Controller{
 			$sql .= " WHERE id=" .$_GET['noticiaid']. ";";
 		}
 		
-		//move_uploaded_file($preview_tmp_name, 'noticiasuploads/' . $final_preview_name);
+		move_uploaded_file($preview_tmp_name, 'noticiauploads/' . $final_preview_name);
 		
 		return $this->executeStatement($sql);
 	}
