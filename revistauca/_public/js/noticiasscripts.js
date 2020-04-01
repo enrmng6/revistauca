@@ -21,7 +21,31 @@ function cargarNoticias(){
 		objetoAjax.send(null);
 
 	}
+
+
+	function modal(){
+
+		// estilo JavaScript puro
+		if(window.XMLHttpRequest){
+			
+			var objetoAjax = new XMLHttpRequest();
 	
+			objetoAjax.onreadystatechange = function () {
+	
+				if(objetoAjax.readyState == 4 && objetoAjax.status == 200){
+					
+					var noticiaslist_div = document.getElementById("ModalEliminarNoticiaConExito");
+					noticiaslist_div.innerHTML = "";//noticiaslist_div.innerHTML = objetoAjax.responseText;
+					$(noticiaslist_div).append(objetoAjax.responseText);
+				}
+	
+			}
+	
+			objetoAjax.open("GET", "/revistauca/__view/shared/modal.php?ModalEliminarNoticiaConExito");
+			objetoAjax.send(null);
+	
+		}
+	}
 	// estilo jQuery
 	/*$.ajax({
 		url: "/revistauca/__controller/noticias_controller.php?select",
@@ -270,9 +294,27 @@ function eliminarNoticia(){
 			if(objetoAjax.readyState == 4 && objetoAjax.status == 200){
 				
 				if(objetoAjax.responseText == 1){
-					
+					//intente de esta manera no me funciono la funcion esta arriba
+					//modal();
 					alert("noticia eliminada con exito!");
 					location.href = "/revistauca/noticias/";
+					
+					//esta tambien intente pero se ve muy poco estetico
+					//window.open("/revistauca/__view/shared/modal.php", "ModalEliminarNoticiaConExito", "width=380, height=500, top=85, left=50", true);
+					
+					
+					//intente esta pero tampoco funciono
+					/*$(document).ready(function () {
+						//select the POPUP FRAME and show it
+						$("#ModalEliminarNoticiaConExito").hide().fadeIn(1000);
+					
+						//close the POPUP if the button with id="close" is clicked
+						$("#close").on("click", function (e) {
+							e.preventDefault();
+							$("#ModalEliminarNoticiaConExito").fadeOut(1000);
+						});
+					});*/
+				
 				}
 				else{
 					alert("No se pudo eliminar la noticia ...");
@@ -319,6 +361,14 @@ function subirImagenAjax(){
 		objetoAjax.send(formData);
 	}
 }*/
+
+
+
+
+
+
+
+
 
 
 

@@ -2,7 +2,7 @@
 
 $nombre_entidad = "usuario";
 include $_SERVER["DOCUMENT_ROOT"] . "/revistauca/__view/shared/header_no_validate.php";
-
+include $_SERVER["DOCUMENT_ROOT"] . "/revistauca/__view/shared/modal.php";
 ?>
 
 <script>
@@ -88,20 +88,20 @@ include $_SERVER["DOCUMENT_ROOT"] . "/revistauca/__view/shared/footer.php";
 	//$(document).ready(function(){
 	$('#btnguardar').click(function(){
 		if($('#nombre').val()==""){
-			alert("Debes ingresar un nombre")
+			$("#ModalNombre").modal();
 			return false;
 		}else if($('#carrera').val()==""){
-			alert("Debes agregar una carrera")
+			$("#ModalCarrera").modal();
 			return false;
 		}else if($('#correo').val()==""){
-			alert("Debes agregar un correo electronico")
+			$("#ModalCorreoRegsitro").modal();
 			return false;
 		}else if($('#password').val()==""){
-			alert("Debes agregar una contraseña")
+			$("#ModalContraRegistro").modal();
 			return false;      
 		}       
 		else if($('#password2').val() != $('#password').val()){
-			alert("Debes confirmar tu password")
+			$("#ModalContraRegistro2").modal();
 			return false;      
 		}  
 		/*cadena="nombre=" + $('#nombre').val()+
@@ -128,11 +128,10 @@ include $_SERVER["DOCUMENT_ROOT"] . "/revistauca/__view/shared/footer.php";
 			contentType: false,
 			success:function(responseText){
 				if(responseText == 1){
-					alert("Se ha registrado exitosamente!");
+					$("#ModalRegistroExitoso").modal();
 					$('#frmajax')[0].reset();
-					location.href = "/revistauca/usuarios/login.php";
 				}else{
-					alert("No se pudo registrar el usuario, comuniquese con el administrador de la app");
+					$("#ModalRegistroNoExitoso").modal();
 				}
 			}
 		});

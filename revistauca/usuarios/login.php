@@ -8,7 +8,7 @@ if(isset($_SESSION['id_usuario'])){
 
 $nombre_entidad = "usuario";
 include $_SERVER["DOCUMENT_ROOT"] . "/revistauca/__view/shared/header_no_validate.php";
-
+include $_SERVER["DOCUMENT_ROOT"] . "/revistauca/__view/shared/modal.php";
 ?>
 
 <script>
@@ -70,10 +70,10 @@ include $_SERVER["DOCUMENT_ROOT"] . "/revistauca/__view/shared/footer.php";
 //$(document).ready(function(){
 	$('#registrar').click(function(){
 		if($('#correo').val()==""){
-			alert("debes ingresar un correo valido")
+			$("#ModalCorreo").modal();
 			return false;
 		}else if($('#password').val()==""){
-			alert("debes ingresar una contraseña valida")
+			$("#ModalContra").modal();
 			return false;
 		}
 
@@ -86,9 +86,9 @@ include $_SERVER["DOCUMENT_ROOT"] . "/revistauca/__view/shared/footer.php";
 			data:cadena,
 			success:function(responseText){
 				if(responseText==1){
-					location.href = "/revistauca/noticias/";
+					$("#ModalBienvenida").modal();
 				}else{
-					alert("Datos Incorrectos");
+					$("#ModalLogin").modal();
 				}
 			}
 		});
