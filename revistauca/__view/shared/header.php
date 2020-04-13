@@ -1,4 +1,4 @@
-<? 
+<?
 ini_set('display_errors', 0);
 ini_set('display_startup_errors', 0);
 //error_reporting(E_ALL);
@@ -52,6 +52,11 @@ else if($nombre_entidad == 'about'){
 	$controller = new About_Controller();
 	$page_title = "Acerca de ...";
 }
+else if($nombre_entidad == 'busqueda'){
+	include $_SERVER["DOCUMENT_ROOT"] . "/revistauca/__controller/busqueda_controller.php";
+	$controller = new Busqueda_Controller();
+	$page_title = "Buscar Revistas UCA";
+}
 else if($nombre_entidad == 'otro'){
 	include $_SERVER["DOCUMENT_ROOT"] . "/revistauca/__controller/otros_controller.php";
 	//$controller = new Otro_Controller();
@@ -77,25 +82,26 @@ if(!isset($_SESSION['id_usuario'])){
 <!-- <head ('Content-Type: text/html; charset=UTF-8' 'Cache-Control: no-cache, must-revalidate')> -->
 	<meta charset="UTF-8">
 	<title>Revista UCA - <? echo $page_title; ?></title>
-	
+
 	<meta name="HanheldFriendly" content="true"/>
 	<meta name="viewport" content="width=device-width,initial-scale=1"/>
-	
+
 	<link rel="shortcut icon" type="image/x-icon" href="/revistauca/_public/img/Logo-UCA-2017.ico">
 	<link rel="stylesheet" href="/revistauca/_public/css/headerstyle.css?" media="screen" />
 	<link rel="stylesheet" href="/revistauca/_public/css/<? echo $nombre_entidad; ?>style.css?" media="screen" />
 	<link rel="stylesheet" href="/revistauca/_public/css/footerstyle.css?" media="screen" />
 	<!-- <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'> -->
-	
+
 	<script src="/revistauca/_public/js/jquery.min.js"></script>
 	<script src="/revistauca/_public/js/header.js?"></script>
 	<script src="/revistauca/_public/js/usuarioscripts.js?"></script>
-    <script src="/revistauca/_public/js/<? echo $nombre_entidad; ?>scripts.js?"></script>
+	<script src="/revistauca/_public/js/sweetalert2@9.js"></script>
+  <script src="/revistauca/_public/js/<? echo $nombre_entidad; ?>scripts.js?"></script>
 </head>
 <body>
 
 	<div id="header">
-	
+
 		<div class="header_fixed">
 			<div class="header_menu_left">
 				<img id="menu" src="/revistauca/_public/img/Opciones_pag.png" alt="Menu" onclick="showLeftMenu();">
@@ -104,9 +110,8 @@ if(!isset($_SESSION['id_usuario'])){
 				<img id="perfil" class="menu_rounded" href="/revistauca/perfil/" src="<? echo $_SESSION['imagen_usuario']; ?>" alt="Perfil" onclick="location.href = '/revistauca/usuarios/perfil.php';" />
 			</div>
 			<div class="header_menu_right">
-				<img id="buscar" alt="Buscar" src="/revistauca/_public/img/Lupa.png" onclick="alert('Pronto tendremos esa funcionalidad!');">
+				<img id="buscar" alt="Buscar" src="/revistauca/_public/img/Lupa.png" onclick="location.href = '/revistauca/busqueda/index.php';" >
 			</div>
 		</div>
-		
+
 	</div>
-	
