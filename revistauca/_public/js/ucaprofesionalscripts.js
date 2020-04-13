@@ -200,10 +200,12 @@ function crearUcaProfesional(ucaProfesionalId){
 			if(objetoAjax.readyState == 4 && objetoAjax.status == 200){
 				
 				if(objetoAjax.responseText == 1){
+					//hay que hacer la mejora cambiar este alert por un pop up modal
 					alert("Revista publicada con exito!");
 					location.href = "/revistauca/revistas/ucaprofesional/";
 				}
 				else{
+					//hay que hacer la mejora cambiar este alert por un pop up modal
 					alert("No se pudo publicar la revista ...");
 				}
 			}
@@ -266,6 +268,7 @@ function enviarComment(){
 					document.getElementById('ucaprofesional_comment_edittext').innerHTML = '';
 				}
 				else{
+					//hay que hacer la mejora cambiar este alert por un pop up modal
 					alert("No se pudo enviar el comentario ...");
 				}
 			}
@@ -294,11 +297,12 @@ function eliminarUcaProfesional(){
 			if(objetoAjax.readyState == 4 && objetoAjax.status == 200){
 				
 				if(objetoAjax.responseText == 1){
-					
-					alert("Revista eliminada con exito!");
+					//este alert se cambio por un pop up esta en modal.php
+					//alert("Revista eliminada con exito!");
 					location.href = "/revistauca/revistas/ucaprofesional/";
 				}
 				else{
+					//hay que hacer la mejora cambiar este alert por un pop up modal
 					alert("No se pudo eliminar la revista ...");
 				}
 			}

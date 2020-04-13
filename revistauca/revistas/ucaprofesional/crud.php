@@ -2,7 +2,7 @@
 
 $nombre_entidad = "ucaprofesional";
 include $_SERVER["DOCUMENT_ROOT"] . "/revistauca/__view/shared/header.php";
-
+include $_SERVER["DOCUMENT_ROOT"] . "/revistauca/__view/shared/modal.php";
 ?>
 	
 <div id="content">
@@ -92,7 +92,7 @@ include $_SERVER["DOCUMENT_ROOT"] . "/revistauca/__view/shared/header.php";
 			<div id="btn_enviar" class="custom_btn" onclick="crearUcaProfesional(<? echo $ucaprofesionalid; ?>);" style="float:right;margin-right: 10%; margin-bottom: 10%;">
 				Publicar
 			</div>
-			<img id="ucaprofesionalDeleteImg" style="width: 50px; height: 0px; float:right; cursor:pointer;" onclick="if(confirm('Seguro que desea eliminar esta revista?')){eliminarUcaProfesional();}" src="/revistauca/_public/img/deleteicon.png">
+			<img id="ucaprofesionalDeleteImg" style="width: 50px; height: 0px; float:right; cursor:pointer;" src="/revistauca/_public/img/deleteicon.png" onclick="EliminarRevistaUcaProfesional()">
 			
 			<script>$("#ucaprofesionalDeleteImg").css("height", "50px");</script>
 		</div>

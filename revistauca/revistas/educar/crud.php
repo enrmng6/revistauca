@@ -2,7 +2,7 @@
 
 $nombre_entidad = "educar";
 include $_SERVER["DOCUMENT_ROOT"] . "/revistauca/__view/shared/header.php";
-
+include $_SERVER["DOCUMENT_ROOT"] . "/revistauca/__view/shared/modal.php";
 ?>
 	
 <div id="content">
@@ -92,8 +92,8 @@ include $_SERVER["DOCUMENT_ROOT"] . "/revistauca/__view/shared/header.php";
 			<div id="btn_enviar" class="custom_btn" onclick="crearEducar(<? echo $educarid; ?>);" style="float:right;margin-right: 10%; margin-bottom: 10%;">
 				Publicar
 			</div>
-			<img id="educarDeleteImg" style="width: 50px; height: 0px; float:right; cursor:pointer;" onclick="if(confirm('Seguro que desea eliminar esta revista?')){eliminarEducar();}" src="/revistauca/_public/img/deleteicon.png">
-			
+
+			<img id="educarDeleteImg" style="width: 50px; height: 0px; float:right; cursor:pointer;"  src="/revistauca/_public/img/deleteicon.png" onclick="EliminarRevistaEducar()">			
 			<script>$("#educarDeleteImg").css("height", "50px");</script>
 		</div>
 		

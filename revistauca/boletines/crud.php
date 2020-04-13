@@ -2,6 +2,7 @@
 
 $nombre_entidad = "boletines";
 include $_SERVER["DOCUMENT_ROOT"] . "/revistauca/__view/shared/header.php";
+include $_SERVER["DOCUMENT_ROOT"] . "/revistauca/__view/shared/modal.php";
 
 ?>
 	
@@ -92,7 +93,7 @@ include $_SERVER["DOCUMENT_ROOT"] . "/revistauca/__view/shared/header.php";
 			<div id="btn_enviar" class="custom_btn" onclick="crearBoletines(<? echo $boletinesid; ?>);" style="float:right;margin-right: 10%; margin-bottom: 10%;">
 				Publicar
 			</div>
-			<img id="boletinesDeleteImg" style="width: 50px; height: 0px; float:right; cursor:pointer;" onclick="if(confirm('Seguro que desea eliminar este boletin?')){eliminarBoletines();}" src="/revistauca/_public/img/deleteicon.png">
+			<img id="boletinesDeleteImg" style="width: 50px; height: 0px; float:right; cursor:pointer;" src="/revistauca/_public/img/deleteicon.png" onclick="EliminarBoletin()">
 			
 			<script>$("#boletinesDeleteImg").css("height", "50px");</script>
 		</div>

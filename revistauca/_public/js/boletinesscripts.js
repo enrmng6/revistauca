@@ -200,10 +200,12 @@ function crearBoletines(boletinesId){
 			if(objetoAjax.readyState == 4 && objetoAjax.status == 200){
 				
 				if(objetoAjax.responseText == 1){
+					//hay que hacer la mejora cambiar este alert por un pop up modal
 					alert("Boletin publicado con exito!");
 					location.href = "/revistauca/boletines/";
 				}
 				else{
+					//hay que hacer la mejora cambiar este alert por un pop up modal
 					alert("No se pudo publicar el boletin ...");
 				}
 			}
@@ -266,6 +268,7 @@ function enviarComment(){
 					document.getElementById('boletines_comment_edittext').innerHTML = '';
 				}
 				else{
+					//hay que hacer la mejora cambiar este alert por un pop up modal
 					alert("No se pudo enviar el comentario ...");
 				}
 			}
@@ -294,11 +297,12 @@ function eliminarBoletines(){
 			if(objetoAjax.readyState == 4 && objetoAjax.status == 200){
 				
 				if(objetoAjax.responseText == 1){
-					
-					alert("Boletin eliminado con exito!");
+					//este alert se cambio por un pop up esta en modal.php
+					//alert("Boletin eliminado con exito!");
 					location.href = "/revistauca/boletines/";
 				}
 				else{
+					//hay que hacer la mejora cambiar este alert por un pop up modal
 					alert("No se pudo eliminar el boletin ...");
 				}
 			}
@@ -323,11 +327,13 @@ function eliminarComment(id_comment){
 
 			if(objetoAjax.readyState == 4 && objetoAjax.status == 200){
 				if(objetoAjax.responseText == 1){
+					//hay que hacer la mejora cambiar este alert por un pop up modal
 					alert("Comentario eliminado!");
 					//document.getElementById('boletines_comment_' + id_comment + '').style.display = 'none';
 					cargarComentariosboletines(document.getElementById('id_padre').value);
 				}
 				else{
+					//hay que hacer la mejora cambiar este alert por un pop up modal
 					alert("No se pudo eliminar el comentario ...");
 				}
 			}

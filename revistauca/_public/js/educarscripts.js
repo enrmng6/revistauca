@@ -200,10 +200,12 @@ function crearEducar(educarId){
 			if(objetoAjax.readyState == 4 && objetoAjax.status == 200){
 				
 				if(objetoAjax.responseText == 1){
+					//hay que hacer la mejora cambiar este alert por un pop up modal
 					alert("Revista publicada con exito!");
 					location.href = "/revistauca/revistas/educar/";
 				}
 				else{
+					//hay que hacer la mejora cambiar este alert por un pop up modal
 					alert("No se pudo publicar la revista ...");
 				}
 			}
@@ -266,6 +268,7 @@ function enviarComment(){
 					document.getElementById('educar_comment_edittext').innerHTML = '';
 				}
 				else{
+					//hay que hacer la mejora cambiar este alert por un pop up modal
 					alert("No se pudo enviar el comentario ...");
 				}
 			}
@@ -295,10 +298,12 @@ function eliminarEducar(){
 				
 				if(objetoAjax.responseText == 1){
 					
-					alert("Revista eliminada con exito!");
+					//este alert se cambio por un pop up esta en modal.php
+					//alert("noticia eliminada con exito!");
 					location.href = "/revistauca/revistas/educar/";
 				}
 				else{
+					//hay que hacer la mejora cambiar este alert por un pop up modal
 					alert("No se pudo eliminar la revista ...");
 				}
 			}
@@ -323,11 +328,13 @@ function eliminarComment(id_comment){
 
 			if(objetoAjax.readyState == 4 && objetoAjax.status == 200){
 				if(objetoAjax.responseText == 1){
+					//hay que hacer la mejora cambiar este alert por un pop up modal
 					alert("Comentario eliminado!");
 					//document.getElementById('educar_comment_' + id_comment + '').style.display = 'none';
 					cargarComentariosEducar(document.getElementById('id_padre').value);
 				}
 				else{
+					//hay que hacer la mejora cambiar este alert por un pop up modal
 					alert("No se pudo eliminar el comentario ...");
 				}
 			}

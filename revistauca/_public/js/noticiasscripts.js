@@ -204,10 +204,12 @@ function crearNoticia(noticiaId){
 			if(objetoAjax.readyState == 4 && objetoAjax.status == 200){
 				
 				if(objetoAjax.responseText == 1){
+					//hay que hacer la mejora cambiar este alert por un pop up modal
 					alert("Noticia publicada con exito!");
 					location.href = "/revistauca/noticias/";
 				}
 				else{
+					//hay que hacer la mejora cambiar este alert por un pop up modal
 					alert("No se pudo publicar la noticia ...");
 				}
 			}
@@ -266,6 +268,7 @@ function enviarComment(){
 					document.getElementById('noticia_comment_edittext').innerHTML = '';
 				}
 				else{
+					//hay que hacer la mejora cambiar este alert por un pop up modal
 					alert("No se pudo enviar el comentario ...");
 				}
 			}
@@ -294,29 +297,15 @@ function eliminarNoticia(){
 			if(objetoAjax.readyState == 4 && objetoAjax.status == 200){
 				
 				if(objetoAjax.responseText == 1){
-					//intente de esta manera no me funciono la funcion esta arriba
-					//modal();
-					alert("noticia eliminada con exito!");
+					//este alert se cambio por un pop up esta en modal.php
+					//alert("noticia eliminada con exito!");
 					location.href = "/revistauca/noticias/";
 					
-					//esta tambien intente pero se ve muy poco estetico
-					//window.open("/revistauca/__view/shared/modal.php", "ModalEliminarNoticiaConExito", "width=380, height=500, top=85, left=50", true);
 					
-					
-					//intente esta pero tampoco funciono
-					/*$(document).ready(function () {
-						//select the POPUP FRAME and show it
-						$("#ModalEliminarNoticiaConExito").hide().fadeIn(1000);
-					
-						//close the POPUP if the button with id="close" is clicked
-						$("#close").on("click", function (e) {
-							e.preventDefault();
-							$("#ModalEliminarNoticiaConExito").fadeOut(1000);
-						});
-					});*/
 				
 				}
 				else{
+					//hay que hacer la mejora cambiar este alert por un pop up modal
 					alert("No se pudo eliminar la noticia ...");
 				}
 			}
