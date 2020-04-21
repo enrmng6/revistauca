@@ -204,29 +204,39 @@ CREATE TABLE educar_comments(
 
 
 
+--
+-- Estructura de tabla para la tabla `noticias`
+--
+
+CREATE TABLE `noticias` (
+  `id` int(11) NOT NULL,
+  `preview` varchar(250) DEFAULT NULL,
+  `archivo` varchar(250) DEFAULT NULL,
+  `titulo` varchar(100) DEFAULT NULL,
+  `id_autor` int(11) DEFAULT NULL,
+  `modificado` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `creado` timestamp NOT NULL DEFAULT current_timestamp(),
+  `descripcion` varchar(250) DEFAULT NULL,
+  `contenido` text DEFAULT NULL,
+  `likes` int(3) DEFAULT NULL,
+  `nomegusta` int(11) DEFAULT 0,
+  `compartido` int(11) DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+INSERT INTO `noticias` (`id`, `preview`, `archivo`, `titulo`, `id_autor`, `modificado`, `creado`, `descripcion`, `contenido`, `likes`, `nomegusta`, `compartido`) VALUES
+(1, 'https://static4.abc.es/media/tecnologia/2019/11/29/hotmail-mail-kHpE--620x349@abc.jpg', NULL, 'Cuidado, las estafas para robar fotografias y documentos a los usuarios aumentan', 1, '2020-04-20 04:49:15', '2020-03-31 02:44:59', 'La compañIa de ciberseguridad Kaspersky ha alertado sobre el aumento...', 'La compañIa de ciberseguridad Kaspersky ha alertado sobre el aumento durante el tercer trimestre de este año 2019 de los ataques de PHISHING y fraudes a usuarios relacionados con el robo de documentos y datos personales como selfies.', 20, 3, 0),
+(2, 'https://cdn.crhoy.net/imagenes/2019/10/Facebook1.jpg', NULL, 'Facebook presenta Problemas a nivel Mundial', 1, '2020-03-31 02:44:59', '2020-03-31 02:44:59', 'La transmisión de videos por medio de la red presenta severas intermitencias...', 'La transmisión de videos por medio de la red presenta severas intermitencias, al igual que la opción de cargar los últimos “posts”, o revisar la bandeja de entrada de mensajes. No es la primera vez que Facebook presenta un “apagón“.', 0, 0, 0),
+(3, 'https://cdn.crhoy.net/imagenes/2019/11/tik-tok1-300x300.jpg', NULL, 'Una Nueva app china se posiciona entre los mas jovenes', 1, '2020-03-31 02:44:59', '2020-03-31 02:44:59', 'La aplicación para compartir videos TikTok ha conquistado a los adolescentes...', '(AFP)- La aplicación para compartir videos TikTok ha conquistado a los adolescentes del mundo entero con pasos de baile, desfiles filmados y consejos para maquillarse, aunque genera también controversia por sus vínculos con el gobierno y la censura de contenidos en China.', 0, 0, 0);
 
 
-CREATE TABLE noticias (
-	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-	preview VARCHAR(250),
-	archivo VARCHAR(250),
-	titulo VARCHAR(100),
-	id_autor INT,
-	modificado TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-	creado TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-	descripcion VARCHAR(250),
-	contenido TEXT,
-	megusta INT DEFAULT 0,
-	nomegusta INT DEFAULT 0,
-	compartido INT DEFAULT 0
-);
-/* En HOST: creado TIMESTAMP DEFAULT CURRENT_TIMESTAMP,*/
+ALTER TABLE `noticias`
+  ADD PRIMARY KEY (`id`);
+
+ALTER TABLE `noticias`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+COMMIT;
 
 
-
-INSERT INTO noticias (preview, titulo, id_autor, creado, descripcion, contenido) VALUES ('https://static4.abc.es/media/tecnologia/2019/11/29/hotmail-mail-kHpE--620x349@abc.jpg', 'Cuidado, las estafas para robar fotografias y documentos a los usuarios aumentan', 1, NULL, 'La compañIa de ciberseguridad Kaspersky ha alertado sobre el aumento...', 'La compañIa de ciberseguridad Kaspersky ha alertado sobre el aumento durante el tercer trimestre de este año 2019 de los ataques de PHISHING y fraudes a usuarios relacionados con el robo de documentos y datos personales como selfies.');
-INSERT INTO noticias (preview, titulo, id_autor, creado, descripcion, contenido) VALUES ('https://cdn.crhoy.net/imagenes/2019/10/Facebook1.jpg', 'Facebook presenta Problemas a nivel Mundial', 1, NULL, 'La transmisión de videos por medio de la red presenta severas intermitencias...', 'La transmisión de videos por medio de la red presenta severas intermitencias, al igual que la opción de cargar los últimos “posts”, o revisar la bandeja de entrada de mensajes. No es la primera vez que Facebook presenta un “apagón“.');
-INSERT INTO noticias (preview, titulo, id_autor, creado, descripcion, contenido) VALUES ('https://cdn.crhoy.net/imagenes/2019/11/tik-tok1-300x300.jpg', 'Una Nueva app china se posiciona entre los mas jovenes', 1, NULL, 'La aplicación para compartir videos TikTok ha conquistado a los adolescentes...', '(AFP)- La aplicación para compartir videos TikTok ha conquistado a los adolescentes del mundo entero con pasos de baile, desfiles filmados y consejos para maquillarse, aunque genera también controversia por sus vínculos con el gobierno y la censura de contenidos en China.');
 
 
 
@@ -334,6 +344,57 @@ INSERT INTO about (titulo, id_autor, creado, contenido) VALUES ('App de las Revi
 	</div>
 
 </div>');
+
+
+
+
+
+
+
+
+CREATE TABLE `likes` (
+  `id_lik` int(11) NOT NULL,
+  `usuario` int(11) NOT NULL,
+  `post` int(11) NOT NULL,
+  `likes` text NOT NULL,
+  `dislikes` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `likes`
+--
+
+INSERT INTO `likes` (`id_lik`, `usuario`, `post`, `likes`, `dislikes`) VALUES
+(54, 801, 2, 'true', 'false'),
+(55, 804, 2, 'true', 'false'),
+(56, 4, 1, 'true', 'false');
+
+--
+-- Índices para tablas volcadas
+--
+
+--
+-- Indices de la tabla `likes`
+--
+ALTER TABLE `likes`
+  ADD PRIMARY KEY (`id_lik`);
+
+--
+-- AUTO_INCREMENT de las tablas volcadas
+--
+
+--
+-- AUTO_INCREMENT de la tabla `likes`
+--
+ALTER TABLE `likes`
+  MODIFY `id_lik` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+
 
 
 
