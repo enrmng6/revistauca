@@ -58,10 +58,14 @@
 
 
 .content_title{
+   
 	display: block; 
 	background: white;
 	text-align: center;
+ 
 }
+
+
 
 
 #usuarios_list{

@@ -3,6 +3,7 @@
 html, body {
 	height: 100%;
 	margin: 0;
+   background-color: #006775;
 } /* Para usar procentajes */ 
 
 
@@ -12,15 +13,27 @@ html, body {
 	width: 100%;
 	height: 12%;
 	display: block;
+     
 }
+
+
+
+#left_popout_cover{
+
+		background: #212121;
+
+}
+
+
 
 .header_fixed{
 	width: 100%;
 	height: 10%; /*para completar la altura del header*/
 	position: fixed;
-	background: white;
+ background-color: #141628;
 	padding-top: 2%;
-	border-bottom: 1px solid green;
+	border-bottom: 1px solid #3B3B3C;;
+      border-radius: 0px 0px 10px 10px;
 }
 
 .header_menu_left{
@@ -29,6 +42,7 @@ html, body {
 	height: 100%;
 	float: left;
 	text-align: center;
+     
 }
 
 .header_menu_right{
@@ -37,6 +51,7 @@ html, body {
 	height: 100%; 
 	float: right;
 	text-align: center;
+   
 }
 
 .header_menu_left img, .header_menu_right img{
@@ -44,10 +59,13 @@ html, body {
 	height: 80%;
 	cursor: pointer;
 	margin-top: 5%;
+
+    
 }
 
 .header_menu_left .menu_rounded{
 	border-radius: 50%;
+  
 }
 
 
