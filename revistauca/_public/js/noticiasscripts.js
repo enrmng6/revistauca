@@ -3,13 +3,13 @@ function cargarNoticias(){
 
 	// estilo JavaScript puro
 	if(window.XMLHttpRequest){
-		
+
 		var objetoAjax = new XMLHttpRequest();
 
 		objetoAjax.onreadystatechange = function () {
 
 			if(objetoAjax.readyState == 4 && objetoAjax.status == 200){
-				
+
 				var noticiaslist_div = document.getElementById("noticias_list");
 				noticiaslist_div.innerHTML = "";//noticiaslist_div.innerHTML = objetoAjax.responseText;
 				$(noticiaslist_div).append(objetoAjax.responseText);
@@ -22,30 +22,6 @@ function cargarNoticias(){
 
 	}
 
-
-	function modal(){
-
-		// estilo JavaScript puro
-		if(window.XMLHttpRequest){
-			
-			var objetoAjax = new XMLHttpRequest();
-	
-			objetoAjax.onreadystatechange = function () {
-	
-				if(objetoAjax.readyState == 4 && objetoAjax.status == 200){
-					
-					var noticiaslist_div = document.getElementById("ModalEliminarNoticiaConExito");
-					noticiaslist_div.innerHTML = "";//noticiaslist_div.innerHTML = objetoAjax.responseText;
-					$(noticiaslist_div).append(objetoAjax.responseText);
-				}
-	
-			}
-	
-			objetoAjax.open("GET", "/revistauca/__view/shared/modal.php?ModalEliminarNoticiaConExito");
-			objetoAjax.send(null);
-	
-		}
-	}
 	// estilo jQuery
 	/*$.ajax({
 		url: "/revistauca/__controller/noticias_controller.php?select",
@@ -58,8 +34,139 @@ function cargarNoticias(){
 		}
 	});*/
 }
+function registrarLikes(id_elemento,numlikes,numdislikes){debugger
+	numlikes=numlikes+1;
+var onfunction="existelike("+id_elemento+");";
+	if(window.XMLHttpRequest){
+
+		var objetoAjax = new XMLHttpRequest();
+
+		objetoAjax.onreadystatechange = function () {
+
+			if(objetoAjax.readyState == 4 && objetoAjax.status == 200){
+				console.log(objetoAjax.responseText);
+				if(objetoAjax.responseText == 1){
+					console.log("like registrado!");
+				}
+				else{
+					console.log("No se pudo registrar el like ...");
+				}
+			}
+
+		}
+
+		objetoAjax.open("POST", "/revistauca/__controller/likes_controller.php?insertlike", true);
+
+		var formData = new FormData();
+		formData.append("id_elemento", id_elemento);
+
+		objetoAjax.send(formData);
+	}
 
 
+document.getElementById('dislike').onclick = function() { existelike(id_elemento,numlikes,numdislikes); }
+document.getElementById('like').disabled = true;
+document.getElementById("llikes").innerHTML=numlikes;
+}
+function registrardisLikes(id_elemento,numlikes,numdislikes){
+numdislikes=numdislikes+1;
+	if(window.XMLHttpRequest){
+
+		var objetoAjax = new XMLHttpRequest();
+
+		objetoAjax.onreadystatechange = function () {
+
+			if(objetoAjax.readyState == 4 && objetoAjax.status == 200){
+				console.log(objetoAjax.responseText);
+				if(objetoAjax.responseText == 1){
+					console.log("like registrado!");
+				}
+				else{
+					console.log("No se pudo registrar el like ...");
+				}
+			}
+
+		}
+
+		objetoAjax.open("POST", "/revistauca/__controller/likes_controller.php?insertdislike", true);
+
+		var formData = new FormData();
+		formData.append("id_elemento", id_elemento);
+
+		objetoAjax.send(formData);
+	}
+ document.getElementById('like').onclick = function() { existedislike(id_elemento,numlikes,numlikes); }
+ document.getElementById('dislike').disabled = true;
+ document.getElementById("ldislikes").innerHTML=numdislikes;
+}
+function existelike(id_elemento,numlikes,numdislikes){
+numlikes=numlikes-1;
+numdislikes=numdislikes+1;
+	if(window.XMLHttpRequest){
+
+		var objetoAjax = new XMLHttpRequest();
+
+		objetoAjax.onreadystatechange = function () {
+
+			if(objetoAjax.readyState == 4 && objetoAjax.status == 200){
+				console.log(objetoAjax.responseText);
+				if(objetoAjax.responseText == 1){
+					console.log("like registrado!");
+				}
+				else{
+					console.log("No se pudo registrar el like ...");
+				}
+			}
+
+		}
+
+		objetoAjax.open("POST", "/revistauca/__controller/likes_controller.php?existlike", true);
+
+		var formData = new FormData();
+		formData.append("id_elemento", id_elemento);
+
+		objetoAjax.send(formData);
+	}
+	document.getElementById('like').onclick = function() { existedislike(id_elemento,numlikes,numdislikes); }
+	document.getElementById('dislike').disabled = true;
+	document.getElementById('like').disabled = false;
+	document.getElementById("ldislikes").innerHTML=numdislikes;
+	document.getElementById("llikes").innerHTML=numlikes;
+}
+function existedislike(id_elemento,numlikes,numdislikes){debugger
+numdislikes=numdislikes-1;
+numlikes=numlikes+1;
+	if(window.XMLHttpRequest){
+
+		var objetoAjax = new XMLHttpRequest();
+
+		objetoAjax.onreadystatechange = function () {
+
+			if(objetoAjax.readyState == 4 && objetoAjax.status == 200){
+				console.log(objetoAjax.responseText);
+				if(objetoAjax.responseText == 1){
+					console.log("like registrado!");
+				}
+				else{
+					console.log("No se pudo registrar el like ...");
+				}
+			}
+
+		}
+
+		objetoAjax.open("POST", "/revistauca/__controller/likes_controller.php?existdislike", true);
+
+		var formData = new FormData();
+		formData.append("id_elemento", id_elemento);
+
+		objetoAjax.send(formData);
+	}
+	 document.getElementById('dislike').onclick = function() { existelike(id_elemento,numlikes,numdislikes); }
+	document.getElementById('like').disabled = true;
+	document.getElementById('dislike').disabled = false;
+	document.getElementById("ldislikes").innerHTML=numdislikes;
+	document.getElementById("llikes").innerHTML=numlikes;
+}
 function showNoticia(noticiaId){
 	location.href = "/revistauca/noticias/detail.php?noticiaid=" + noticiaId;
 }
@@ -68,30 +175,30 @@ var highlightfirst = false;
 function cargarComentariosNoticia(noticiaId) {
 
 	if(window.XMLHttpRequest){
-		
+
 		var objetoAjax = new XMLHttpRequest();
 
 		objetoAjax.onreadystatechange = function () {
 
 			if(objetoAjax.readyState == 4 && objetoAjax.status == 200){
-			
+
 				var arregloComentarios = JSON.parse(objetoAjax.responseText);
-				
+
 				var numeroComentarios = arregloComentarios[0];
-				
+
 				document.getElementById("noticia_comments_count").innerHTML = numeroComentarios.row_count;
 				document.getElementById("noticia_comments_count_label").innerHTML = (numeroComentarios.row_count == 1) ? "Comentario" : "Comentarios";
-				
+
 				var listaComentarios = arregloComentarios[1];
-				
+
 				var respuestaFinal = "";
-				
+
 				var colaCargasImagenes = [];
-				
+
 				for( i = 0; i < listaComentarios.length; i++ ) {
-				
+
 					var objetoActual = listaComentarios[i];
-					
+
 					var comentarioHTML = "<div class='noticia_comments_item' id='noticia_comment_" + objetoActual.id + "' >";
 					comentarioHTML += "<div>";
 					comentarioHTML += "	<div class='noticia_comment_thumbnail'>";
@@ -113,26 +220,26 @@ function cargarComentariosNoticia(noticiaId) {
 					comentarioHTML += "	<div class='inline'>Dislike</div>";
 					comentarioHTML += "</div>-->";
 					comentarioHTML += "</div> <!-- end .noticia_comments_item -->";
-						
+
 					respuestaFinal += comentarioHTML;
-						
+
 					colaCargasImagenes.push("<script>cargarImagenNombre(" + objetoActual.id_autor + ");</script>");
-						
+
 				}
-				
+
 				document.getElementById("noticia_comments_list").innerHTML = respuestaFinal;
-				
+
 				for(i = 0; i < colaCargasImagenes.length; i++){
 					$(document.body).append(colaCargasImagenes[i]);
 				}
-				
+
 			}
 
 		}
 
 		objetoAjax.open("GET", "/revistauca/__controller/noticias_controller.php?select&noticiaid=" + noticiaId + "&comments&json");
 		objetoAjax.send(null);
-		
+
 		if(highlightfirst){
 			var condicion = 1;
 			$(".noticia_comments_item").each(function(){
@@ -161,25 +268,25 @@ function cargarComentariosNoticia(noticiaId) {
 				condicion++;
 			});
 		}
-		
+
 	}
 }
 
 function cargarImagenNombre(id_autor){
-	
+
 	// CODIGO PARA CARGAR IMAGEN VIA JSON/AJAX/PHP
 	$.ajax({
 		type:"GET",
 		url:"/revistauca/__controller/usuarios_controller.php?select&userid=" + id_autor + "&json",
 		success:function(responseText){
-			
+
 			var jsonObject = JSON.parse(responseText);
 			jsonObject = jsonObject[0];
-			
+
 			$(".img" + id_autor + "").each(function(){
 				$(this).attr("src", jsonObject.imagen);
 			});
-			
+
 			$(".nombre" + id_autor + "").each(function(){
 				$(this).html(jsonObject.nombre);
 			});
@@ -192,71 +299,69 @@ function mostrarImagenNoticia(event) {
 	imagen.src = URL.createObjectURL(event.target.files[0]);
 	URL.revokeObjectURL(event.target.files[0]);
 };
-				
+
 function crearNoticia(noticiaId){
 
 	if(window.XMLHttpRequest){
-		
+
 		var objetoAjax = new XMLHttpRequest();
 
 		objetoAjax.onreadystatechange = function () {
 
 			if(objetoAjax.readyState == 4 && objetoAjax.status == 200){
-				
+
 				if(objetoAjax.responseText == 1){
-					//hay que hacer la mejora cambiar este alert por un pop up modal
 					alert("Noticia publicada con exito!");
 					location.href = "/revistauca/noticias/";
 				}
 				else{
-					//hay que hacer la mejora cambiar este alert por un pop up modal
 					alert("No se pudo publicar la noticia ...");
 				}
 			}
 
 		}
-		
+
 		//var noticiaId = document.getElementById('noticiaId').innerHTML.trim();
 		if(noticiaId == '')
 			objetoAjax.open("POST", "/revistauca/__controller/noticias_controller.php?insert", true);
 		else
 			objetoAjax.open("POST", "/revistauca/__controller/noticias_controller.php?insert&noticiaid=" + noticiaId + "", true);
-		
+
 		var inputFile = document.getElementById('noticiaPreview');
 		var noticiaPreview = inputFile.files[0];
-		
+
 		var noticiaTitle = document.getElementById('noticiaTitle').value;
 		var noticiaDescription = document.getElementById('noticiaDescription').innerHTML;
 		var noticiaContent = document.getElementById('noticiaContent').innerHTML;
-		
+
 		var validation = "";
 		validation += (noticiaTitle.trim() === "") ? "El titulo es obligatorio\n" : "";
 		validation += (noticiaDescription.trim() === "") ? "La descripcion es obligatoria\n" : "";
 		validation += (noticiaContent.trim() === "") ? "El contenido es obligatorio\n" : "";
-		
+
 		if(validation !== ""){
 			alert(validation);
 			return;
 		}
-		
+
 		var formData = new FormData();
 		formData.append("preview", noticiaPreview);
 		formData.append("titulo", noticiaTitle);
 		formData.append("descripcion", noticiaDescription);
 		formData.append("contenido", noticiaContent);
-		
+
 		objetoAjax.send(formData);
 	}
 }
 
 function enviarComment(){
-	
+
 	if(document.getElementById('noticia_comment_edittext').innerHTML.trim() === ""){
 		return;
 	}
 
 	if(window.XMLHttpRequest){
-		
+
 		var objetoAjax = new XMLHttpRequest();
 
 		objetoAjax.onreadystatechange = function () {
@@ -268,7 +373,6 @@ function enviarComment(){
 					document.getElementById('noticia_comment_edittext').innerHTML = '';
 				}
 				else{
-					//hay que hacer la mejora cambiar este alert por un pop up modal
 					alert("No se pudo enviar el comentario ...");
 				}
 			}
@@ -276,11 +380,11 @@ function enviarComment(){
 		}
 
 		objetoAjax.open("POST", "/revistauca/__controller/noticias_controller.php?newcomment", true);
-		
+
 		var formData = new FormData();
 		formData.append("id_padre", document.getElementById('id_padre').value);
 		formData.append("comentario", document.getElementById('noticia_comment_edittext').innerHTML);
-		
+
 		objetoAjax.send(formData);
 	}
 }
@@ -289,35 +393,65 @@ function enviarComment(){
 function eliminarNoticia(){
 
 	if(window.XMLHttpRequest){
-		
+
 		var objetoAjax = new XMLHttpRequest();
 
 		objetoAjax.onreadystatechange = function () {
 
 			if(objetoAjax.readyState == 4 && objetoAjax.status == 200){
-				
+
 				if(objetoAjax.responseText == 1){
-					//este alert se cambio por un pop up esta en modal.php
-					//alert("noticia eliminada con exito!");
+
+					alert("noticia eliminada con exito!");
 					location.href = "/revistauca/noticias/";
-					
-					
-				
 				}
 				else{
-					//hay que hacer la mejora cambiar este alert por un pop up modal
 					alert("No se pudo eliminar la noticia ...");
 				}
 			}
 
 		}
-		
+
 		var noticiaId = document.getElementById('noticiaId').innerHTML.trim();
 		objetoAjax.open("POST", "/revistauca/__controller/noticias_controller.php?noticiaid=" +noticiaId+ "&delete", true);
-		
+
 		objetoAjax.send();
 	}
 }
+
+
+
+function registrarVisita(idElemento){
+
+	if(window.XMLHttpRequest){
+
+		var objetoAjax = new XMLHttpRequest();
+
+		objetoAjax.onreadystatechange = function () {
+
+			if(objetoAjax.readyState == 4 && objetoAjax.status == 200){
+				//alert(objetoAjax.responseText);
+				if(objetoAjax.responseText == 1){
+					//console.log("Visita registrada!");
+				}
+				else{
+					//console.log("No se pudo registrar la visita ...");
+				}
+			}
+
+		}
+
+		objetoAjax.open("POST", "/revistauca/__controller/visitas_controller.php?insert", true);
+
+		var formData = new FormData();
+		formData.append("id_elemento", idElemento);
+		formData.append("entidad", 'noticias');
+
+		objetoAjax.send(formData);
+	}
+}
+
+
 
 /*var mostrarImagen = function(event) {
 	var imagen = document.getElementById('postPreviewImg');
@@ -328,7 +462,7 @@ function eliminarNoticia(){
 function subirImagenAjax(){
 
 	if(window.XMLHttpRequest){
-		
+
 		var objetoAjax = new XMLHttpRequest();
 
 		objetoAjax.onreadystatechange = function () {
@@ -340,31 +474,13 @@ function subirImagenAjax(){
 		}
 
 		objetoAjax.open("POST", "uploader.php?", true);
-		
+
 		var inputFile = document.getElementById('archivo');
 		var file = inputFile.files[0];
-	
+
 		var formData = new FormData();
 		formData.append("archivo", file);
-		
+
 		objetoAjax.send(formData);
 	}
 }*/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

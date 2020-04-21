@@ -2,7 +2,7 @@
 
 $nombre_entidad = "noticias";
 include $_SERVER["DOCUMENT_ROOT"] . "/revistauca/__view/shared/header.php";
-include $_SERVER["DOCUMENT_ROOT"] . "/revistauca/__view/shared/modal.php";
+
 ?>
 	
 <div id="content">
@@ -87,7 +87,7 @@ include $_SERVER["DOCUMENT_ROOT"] . "/revistauca/__view/shared/modal.php";
 			<div id="btn_enviar" class="custom_btn" onclick="crearNoticia(<? echo $noticiaid; ?>);" style="float:right;margin-right: 10%; margin-bottom: 10%;">
 				Publicar
 			</div>
-			<img id="noticiaDeleteImg" style="width: 50px; height: 0px; float:right; cursor:pointer;" src="/revistauca/_public/img/deleteicon.png" onclick="EliminarNoticia()">
+			<img id="noticiaDeleteImg" style="width: 50px; height: 0px; float:right; cursor:pointer;" onclick="if(confirm('Seguro que desea eliminar este noticia?')){eliminarNoticia();}" src="/revistauca/_public/img/deleteicon.png">
 			
 			<script>$("#noticiaDeleteImg").css("height", "50px");</script>
 		</div>
